@@ -39,9 +39,6 @@ public class IndexController extends HttpServlet {
 			if (!erros.isExisteErros()) {
 				UsuarioDAO dao = new UsuarioDAO();
 				Usuario usuario = dao.getbyEmail(email);
-				System.out.println(email);
-				System.out.println(senha);
-				System.out.println(usuario.getSenha());
 				if (usuario != null) {
 					if (usuario.getSenha().equals(senha)) {
 						System.out.println("entrou aqui");
