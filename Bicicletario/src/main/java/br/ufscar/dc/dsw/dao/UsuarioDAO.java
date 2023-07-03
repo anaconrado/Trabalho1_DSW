@@ -14,18 +14,23 @@ public class UsuarioDAO extends GenericDAO {
 
     public void insert(Usuario usuario) {
 
-        String sql = "INSERT INTO Usuario (codigo, email, senha, papel, nome) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Usuario (codigo, nome, email, senha, papel) VALUES (?, ?, ?, ?, ?)";
 
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
-
+            
+            System.out.println(usuario.getCodigo());
+            System.out.println(usuario.getNome());
+            System.out.println(usuario.getEmail());
+            
             statement = conn.prepareStatement(sql);
             statement.setString(1, usuario.getCodigo());
-            statement.setString(2, usuario.getEmail());
-            statement.setString(3, usuario.getSenha());
-            statement.setString(4, usuario.getPapel());
-            statement.setString(5, usuario.getNome());
+            statement.setString(2, usuario.getNome());
+            statement.setString(3, usuario.getEmail());
+            statement.setString(4, usuario.getSenha());
+            statement.setString(5, usuario.getPapel());
+            
             statement.executeUpdate();
 
             statement.close();

@@ -30,12 +30,12 @@ public class UsuarioController extends HttpServlet {
     	
     	if (usuario == null) {
     		response.sendRedirect(request.getContextPath());
-    	} else if (usuario.getPapel().equals("USER")) {
+    	} else if (usuario.getPapel().equals("CLIENTE") || usuario.getPapel().equals("LOCADORA")) {
     		RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/usuario/index.jsp");
             dispatcher.forward(request, response);
     	} else {
     		erros.add("Acesso não autorizado!");
-    		erros.add("Apenas Papel [USER] tem acesso a essa página");
+    		erros.add("Apenas Papel [CLIENTE] e [LOCADORA] tem acesso a essa página");
     		request.setAttribute("mensagens", erros);
     		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
     		rd.forward(request, response);
