@@ -1,0 +1,11 @@
+/home/gabrielly/eclipse-workspace/Bicicletario/src/main/java/br/ufscar/dc/dsw/dao/UsuarioDAO.java
+/home/gabrielly/eclipse-workspace/Bicicletario/src/main/java/br/ufscar/dc/dsw/dao/ClienteDAO.java
+/home/gabrielly/eclipse-workspace/Bicicletario/src/main/java/br/ufscar/dc/dsw/domain/Usuario.java
+/home/gabrielly/eclipse-workspace/Bicicletario/src/main/java/br/ufscar/dc/dsw/controller/UsuarioController.java
+/home/gabrielly/eclipse-workspace/Bicicletario/src/main/java/br/ufscar/dc/dsw/util/Erro.java
+/home/gabrielly/eclipse-workspace/Bicicletario/src/main/java/br/ufscar/dc/dsw/dao/GenericDAO.java
+/home/gabrielly/eclipse-workspace/Bicicletario/src/main/java/br/ufscar/dc/dsw/domain/Locadora.java
+/home/gabrielly/eclipse-workspace/Bicicletario/src/main/java/br/ufscar/dc/dsw/dao/LocadoraDAO.java
+/home/gabrielly/eclipse-workspace/Bicicletario/src/main/java/br/ufscar/dc/dsw/controller/IndexController.java
+/home/gabrielly/eclipse-workspace/Bicicletario/src/main/java/br/ufscar/dc/dsw/controller/AdminController.java
+/home/gabrielly/eclipse-workspace/Bicicletario/src/main/java/br/ufscar/dc/dsw/domain/Cliente.java
