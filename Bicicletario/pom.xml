@@ -6,10 +6,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.ufscar.dc.dsw</groupId>
-	<artifactId>Bicicletaria</artifactId>
+	<artifactId>Bicicletario</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Bicicletaria</name>
+	<name>Bicicletario</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
