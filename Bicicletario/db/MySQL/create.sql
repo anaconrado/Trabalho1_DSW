@@ -35,11 +35,7 @@ create table Locadora
 create table Bicicleta
 (
     id        bigint not null,
-    modelo    varchar(20),
-    ano       integer,
-    descricao text,
-    valor     float,
-    primary key (id)
+    primary key (id),
 );
 
 create table Locacao
@@ -51,6 +47,7 @@ create table Locacao
     cnpj    varchar(20) not null,
     cpf     varchar(20) not null,
     bike_id	bigint not null,
+    usuario_id bigint not null,
     primary key (id),
     foreign key (cpf) references Cliente (cpf) ON DELETE CASCADE ON UPDATE CASCADE ,
     foreign key (bike_id) references Bicicleta (id) ON DELETE CASCADE ON UPDATE CASCADE ,
