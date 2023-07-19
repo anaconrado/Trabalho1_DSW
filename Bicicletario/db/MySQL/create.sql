@@ -35,28 +35,30 @@ create table Locadora
 
 create table Bicicleta
 (
-    id        bigint not null,
-    modelo    varchar(20),
-    ano       integer,
-    descricao text,
-    valor     float,
+    id        varchar(20) not null,
+    modelo    varchar(20) not null,
+    ano       varchar(20) not null,
+    descricao varchar(20) not null,
+    valor     varchar(20) not null,
     primary key (id)
 );
 
 create table Locacao
-(
-    id		bigint      not null auto_increment,
-    status	int         not null,
-	data    date        not null,
-    val     float,
-    cnpj    varchar(20) not null,
-    cpf     varchar(20) not null,
-    bike_id	bigint not null,
-    primary key (id),
-    foreign key (cpf) references Cliente (cpf) ON DELETE CASCADE ON UPDATE CASCADE ,
-    foreign key (bike_id) references Bicicleta (id) ON DELETE CASCADE ON UPDATE CASCADE ,
-    foreign key (cnpj) references Locadora (cnpj) ON DELETE CASCADE ON UPDATE CASCADE
+( 
+    id      varchar(20) not null, 
+    status  varchar(20) not null,
+    data    varchar(20) not null, 
+    val     varchar(20) not null, 
+    cnpj    varchar(14)  not null,
+    cpf     varchar(20)  not null,
+    bike_id varchar(20) not null,
+    primary key (id), 
+    foreign key (cnpj) references Locadora(cnpj), 
+    foreign key (cpf) references Cliente(cpf), 
+    foreign key (bike_id) references Bicicleta(id)
 );
+
+
 
 insert into Usuario(codigo, nome, email, senha, papel) values ('12345','admin', 'admin@hotmail.com', 'admin', 'ADMIN');
 
@@ -72,3 +74,6 @@ insert into Locadora values ('0000','são carlos');
 
 insert into Usuario values ('6781','usuario','user1@hotmail.com', '1234',  'LOCADORA');
 insert into Locadora values ('6781','são carlos');
+
+insert into Bicicleta(id, modelo, ano, descricao, valor) values ('0000', 'modelo', '2013', 'bike', '2000');
+insert into Locacao values ('1111', 'em uso', '21/03/2000', '21.88', '0000', '6789', '0000');

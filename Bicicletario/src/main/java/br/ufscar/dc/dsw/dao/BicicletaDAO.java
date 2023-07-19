@@ -32,7 +32,7 @@ public class BicicletaDAO extends GenericDAO {
     public Bicicleta get(Long id) {
     	Bicicleta bicicleta = null;
 
-        String sql = "SELECT * from Livro l where l.id = ?";
+        String sql = "SELECT * from Bicicleta b where b.ID = ?";
 
         try {
             Connection conn = this.getConnection();

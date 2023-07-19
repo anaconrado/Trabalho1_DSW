@@ -6,31 +6,28 @@ public class Locacao {
 	private String status;
 	private String data;
 	private Float val;
-	private String cnpj;
-	private String cpf;
+	private Locadora locadora;
+	private Cliente cliente;
 	private Bicicleta bicicleta;
-	private Usuario usuario;
 
-	public Locacao(Long id, String status, String data, Float val, String cnpj, String cpf, Bicicleta bicicleta, Usuario usuario) {
+	public Locacao(Long id, String status, String data, Float val, Locadora locadora, Cliente cliente, Bicicleta bicicleta) {
 		this.id = id;
 		this.status = status;
 		this.data = data;
 		this.val = val;
-		this.cnpj = cnpj;
-		this.cpf = cpf;
+		this.locadora = locadora;
+		this.cliente = cliente;
 		this.bicicleta = bicicleta;
-		this.usuario = usuario;
 	}
 
-	public Locacao(String status, String data, Float val, String cnpj, String cpf, Bicicleta bicicleta, Usuario usuario) {
+	public Locacao(String status, String data, Float val, String cnpj, String cpf, Bicicleta bicicleta) {
 		super();
 		this.status = status;
 		this.data = data;
 		this.val = val;
-		this.cnpj = cnpj;
-		this.cpf = cpf;
+		this.locadora = locadora;
+		this.cliente = cliente;
 		this.bicicleta = bicicleta;
-		this.usuario = usuario;
 	}
 
 	public Long getId() {
@@ -65,36 +62,27 @@ public class Locacao {
 		this.val = val;
 	}
 
-	public String getCnpj() {
-		return cnpj;
+	public Locadora getLocadora() {
+		return locadora;
 	}
 	
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
+	public void setLocadora(Locadora locadora) {
+		this.locadora = locadora;
 	}
 	
-	public String getCpf() {
-		return cpf;
+	public Cliente getCliente() {
+		return cliente;
 	}
 	
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setCpf(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	
 	public Bicicleta getBicicleta() {
 		return bicicleta;
 	}
 
-	public void setLivro(Bicicleta bicicleta) {
+	public void Bicicleta(Bicicleta bicicleta) {
 		this.bicicleta = bicicleta;
 	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 }

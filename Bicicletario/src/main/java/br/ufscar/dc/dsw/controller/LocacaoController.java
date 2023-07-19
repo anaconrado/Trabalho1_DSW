@@ -13,21 +13,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-		
+
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.domain.Locacao;
 import br.ufscar.dc.dsw.domain.Bicicleta;
+import br.ufscar.dc.dsw.domain.Locadora;
+import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.dao.LocacaoDAO;
+import br.ufscar.dc.dsw.dao.LocadoraDAO;
+import br.ufscar.dc.dsw.dao.ClienteDAO;
 import br.ufscar.dc.dsw.util.Erro;
 
 
-@WebServlet(urlPatterns = "/locacao/*")
+@WebServlet(urlPatterns = "/locacoes/*")
 public class LocacaoController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    
+
     private LocacaoDAO dao;
-    
+
     @Override
     public void init() {
         dao = new LocacaoDAO();
@@ -47,7 +51,7 @@ public class LocacaoController extends HttpServlet {
 		if (usuario == null) {
 			response.sendRedirect(request.getContextPath());
 			return;
-		} else if (!usuario.getPapel().equals("USER")) {
+		} else if (usuario.getPapel().equals("ADMIN")) {
 			erros.add("Acesso não autorizado!");
 			erros.add("Apenas Papel [USER] tem acesso a essa página");
 			request.setAttribute("mensagens", erros);
@@ -55,27 +59,49 @@ public class LocacaoController extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
-		
+
         String action = request.getPathInfo();
         if (action == null) {
             action = "";
         }
-
         try {
-	        lista(request, response);
-	        
+        	lista(request, response);
+            /*switch (action) {
+            	
+                case "/cadastro":
+                    apresentaFormCadastro(request, response);
+                    break;
+                default:
+                    lista(request, response);
+                    break;
+            }
+            */
         } catch (RuntimeException | IOException | ServletException e) {
             throw new ServletException(e);
         }
     }
 
-    //Listagem de locações com login de cliente (R6)
+    //Listagem de locações com login de cliente e locadora (R6 e R8)
     private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
-        List<Locacao> listaLocacoes= dao.getAll(usuario);
-        request.setAttribute("listaLocacao", listaLocacoes);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/compra/lista.jsp");
+        List<Locacao> listaLocacoes;
+        if (usuario.getPapel().equals("LOCADORA")) 
+            listaLocacoes = dao.getAllLocadora(usuario);
+        else 
+            listaLocacoes = dao.getAllCliente(usuario);
+        request.setAttribute("listaLocacoes", listaLocacoes);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/locacao/lista.jsp");
         dispatcher.forward(request, response);
     }
+    
+    /*
+
+    private void apresentaFormCadastro(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setAttribute("livros", getLivros());
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/compra/formulario.jsp");
+        dispatcher.forward(request, response);
+    }
+    */
 
 }
