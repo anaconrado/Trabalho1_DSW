@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	layout:decorate="~{fragments/layout}">
+<head>
+<title th:text="#{admin.index.title}"></title>
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+		<h1 th:text="#{admin.index.title}"></h1>
+        <div class="btn-group-vertical">
+            
+				<a class="btn btn-primary mb-2" type="button" 
+					th:href="@{/clientes/listar}">Listar clientes</a>
+				<a class="btn btn-primary mb-2" type="button" 
+					th:href="@{/clientes/cadastrar}">Cadastrar cliente</a>
+				<a class="btn btn-primary mb-2" type="button" 
+					th:href="@{/locadoras/listar}">Listar locadoras</a>
+				<a class="btn btn-primary mb-2" type="button" 
+					th:href="@{/locadoras/cadastrar}">Cadastrar locadora</a>
+				<a class="btn btn-primary mb-2" type="button"
+                    href="javascript:history.back()"><span th:text="#{previous.message}"></span></a>
+			
+		</div>
+        
+    </div>
+</body>
+</html>
