@@ -12,13 +12,13 @@
         <div class="btn-group-vertical">
             
 				<a class="btn btn-primary mb-2" type="button" 
-					th:href="@{/clientes/listar}">Listar clientes</a>
+					th:href="@{/clientes/listar}" th:text="#{cliente.listar.label}"></a>
 				<a class="btn btn-primary mb-2" type="button" 
-					th:href="@{/clientes/cadastrar}">Cadastrar cliente</a>
+					th:href="@{/clientes/cadastrar}" th:text="#{cliente.cadastrar.label}"></a>
 				<a class="btn btn-primary mb-2" type="button" 
-					th:href="@{/locadoras/listar}">Listar locadoras</a>
+					th:href="@{/locadoras/listar}" th:text="#{locadora.listar.label}"></a>
 				<a class="btn btn-primary mb-2" type="button" 
-					th:href="@{/locadoras/cadastrar}">Cadastrar locadora</a>
+					th:href="@{/locadoras/cadastrar}" th:text="#{locadora.cadastrar.label}"></a>
 				<a class="btn btn-primary mb-2" type="button"
                     href="javascript:history.back()"><span th:text="#{previous.message}"></span></a>
 			
