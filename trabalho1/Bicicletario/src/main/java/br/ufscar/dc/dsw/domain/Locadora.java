@@ -17,6 +17,12 @@ public class Locadora extends Usuario {
 		this.cidade = cidade;
 	}
 
+	public Locadora(String cnpj, String cidade, String email, String papel, String nome) {
+		super(cnpj, email, papel, nome);
+		this.cnpj = cnpj;
+		this.cidade = cidade;
+	}
+
 	public String getCnpj() {
 		return cnpj;
 	}
