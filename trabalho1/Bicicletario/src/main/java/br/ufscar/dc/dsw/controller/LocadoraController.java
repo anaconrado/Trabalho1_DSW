@@ -30,6 +30,53 @@ public class LocadoraController extends HttpServlet{
         String action = request.getPathInfo();
 
         if(action == null){
+            action = "";
+        } else if(action.equals("locadorasPorCidade")){
+            listLocadorasPorCidade(request, response);
+        } else if(action.equals("listaLocadoras")) {
+            listarLocadoras(request, response);
+        }
+    }
+
+    private void listarLocadoras(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Locadora> listLoc = dao.getLocadoras();
+
+        // Adicione a lista de locadoras ao request
+        request.setAttribute("locadoras", listLoc);
+
+        // Encaminhe para a página JSP para exibir a lista de locadoras
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/listaLocadoras.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void listLocadorasPorCidade(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Obtenha o parâmetro da cidade da solicitação
+        String cidade = request.getParameter("cidade");
+    
+        // Valide se o parâmetro da cidade está presente
+        if (cidade != null && !cidade.isEmpty()) {
+            // Lógica para recuperar as locadoras por cidade do banco de dados
+            List<Locadora> locadorasPorCidade = dao.getByCidade(cidade);
+    
+            // Adicione a lista de locadoras ao request
+            request.setAttribute("locadoras", locadorasPorCidade);
+            //request.setAttribute("cidade", cidade);
+    
+            // Encaminhe para a página JSP para exibir a lista de locadoras por cidade
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaPorCidade.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            // Redirecione para a página de listagem de locadoras caso não seja especificada uma cidade
+            response.sendRedirect(request.getContextPath() + "/locadora");
+        }
+    }
+
+    /*
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getPathInfo();
+
+        if(action == null){
             listarLocadoras(request, response);
         } else if(action.equals("locadorasPorCidade")){
             listLocadorasPorCidade(request, response);
@@ -76,6 +123,6 @@ public class LocadoraController extends HttpServlet{
         //locadorasPorCidade.add(0, loc);
 
         return locadorasPorCidade;
-    }
+    }*/
     
 }

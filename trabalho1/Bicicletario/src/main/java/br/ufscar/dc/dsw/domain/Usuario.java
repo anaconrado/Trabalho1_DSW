@@ -29,6 +29,14 @@ public class Usuario {
 		this.nome = nome;
 	}
 
+	public Usuario(String codigo, String email, String papel, String nome) {
+		super();
+		this.codigo = codigo;
+		this.email = email;
+		this.papel = papel;
+		this.nome = nome;
+	}
+
 	public String getCodigo() {
 		return codigo;
 	}

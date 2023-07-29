@@ -69,6 +69,77 @@ public class LocadoraDAO extends GenericDAO {
         
     }
 
+    public List<Locadora> getLocadoras() {
+
+        List<Locadora> listaLocadoras = new ArrayList<>();
+
+        //String sql = "SELECT * from Locadora c";
+        String sql = "select cnpj, cidade, email, nome FROM Locadora JOIN Usuario ON Locadora.cnpj = Usuario.codigo;";
+
+        try {
+            Connection conn = this.getConnection();
+            Statement statement = conn.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                String cnpj		= resultSet.getString("cnpj");
+                String cidade	= resultSet.getString("cidade");
+                String email 	= resultSet.getString("email");
+                //String senha 	= resultSet.getString("senha");
+                //String papel 	= resultSet.getString("papel");
+                String nome		= resultSet.getString("nome");
+                
+                //String cpf, String telefone, String sexo, String nascimento, String nome, String email, String senha, String papel)
+                Locadora locadora = new Locadora(cnpj, cidade, email, "Locadoras", nome);
+                listaLocadoras.add(locadora);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaLocadoras;
+        
+    }
+
+    public List<Locadora> getByCidade(String cidade){
+        List<Locadora> listaLocadoras = new ArrayList<>();
+
+        //String sql = "SELECT * from Locadora c";
+        //String sql = "select cnpj, email, senha, papel, nome FROM Locadora JOIN Usuario ON Locadora.cnpj = Usuario.codigo;";
+        String sql = "SELECT codigo, nome, email, cidade FROM Usuario JOIN Locadora ON Usuario.codigo = Locadora.cnpj WHERE Usuario.papel = 'LOCADORA' AND cidade = ?;";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, cidade);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String cnpj		= resultSet.getString("cnpj");
+                //String cidade	= resultSet.getString("cidade");
+                String email 	= resultSet.getString("email");
+                //String senha 	= resultSet.getString("senha");
+                //String papel 	= resultSet.getString("papel");
+                String nome		= resultSet.getString("nome");
+                
+                //String cpf, String telefone, String sexo, String nascimento, String nome, String email, String senha, String papel)
+                Locadora locadora = new Locadora(cnpj, cidade, email, "Locadora", nome);
+                listaLocadoras.add(locadora);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaLocadoras;
+    } 
+
     public void delete(Locadora locadora) {
         String sql = "DELETE FROM Locadora where cnpj = ?";
 
