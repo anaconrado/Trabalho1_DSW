@@ -1,6 +1,6 @@
 # Trabalhos DSW 1
 
-**Integrantes do Grupo**
+**Integrantes do Grupo**<br>
 Ana Ellen Deodato Pereira da Silva - RA: 800206<br>
 Ana Luisa Conrado Ferreira de Oliveira - RA: 801583<br>
 Gabrielly Castilho Guimarães - RA: 805757<br>
