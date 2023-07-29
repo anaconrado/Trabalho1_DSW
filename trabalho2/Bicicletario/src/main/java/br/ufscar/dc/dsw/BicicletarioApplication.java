@@ -1,5 +1,7 @@
 package br.ufscar.dc.dsw;
 
+import java.math.BigDecimal;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +14,7 @@ import br.ufscar.dc.dsw.dao.IUsuarioDAO;
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.Locadora;
+import br.ufscar.dc.dsw.domain.Locacao;
 
 
 
@@ -72,6 +75,12 @@ public class BicicletarioApplication {
 			l2.setCnpj("3333");
 			l2.setCidade("São Carlos");
 			LocadoraDao.save(l2);
+
+			Locacao lo1 = new Locacao();
+			lo1.setData("30/01/2022");
+			lo1.setValor(BigDecimal.valueOf(54.9));
+			lo1.setCliente(c1);
+			lo1.setLocadora(l1);
 		};
 	}
 }
