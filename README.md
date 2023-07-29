@@ -1,10 +1,10 @@
 # Trabalhos DSW 1
 
 **Integrantes do Grupo**
-Ana Ellen Deodato Pereira da Silva - RA: 800206
-Ana Luisa Conrado Ferreira de Oliveira - RA: 801583
-Gabrielly Castilho Guimarães - RA: 805757
-Lorenzo Correia Maia - RA: 759502
+Ana Ellen Deodato Pereira da Silva - RA: 800206<br>
+Ana Luisa Conrado Ferreira de Oliveira - RA: 801583<br>
+Gabrielly Castilho Guimarães - RA: 805757<br>
+Lorenzo Correia Maia - RA: 759502<br>
 
 ## Trabalho 1
 
