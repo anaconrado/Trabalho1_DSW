@@ -23,8 +23,6 @@ public class ClienteController {
 	@Autowired
 	private IClienteService service;
 	
-	@Autowired
-	private BCryptPasswordEncoder encoder;
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Cliente cliente) {
@@ -42,11 +40,8 @@ public class ClienteController {
 		
 		if (result.hasErrors()) {
 			return "cliente/cadastro";
-		}
-
-		System.out.println("password = " + cliente.getPassword());
+		}		
 		
-		cliente.setPassword(encoder.encode(cliente.getPassword()));
 		service.salvar(cliente);
 		attr.addFlashAttribute("sucess", "Cliente inserido com sucesso.");
 		return "redirect:/clientes/listar";

@@ -23,8 +23,7 @@ public class LocadoraController {
 	@Autowired
 	private ILocadoraService service;
 	
-	@Autowired
-	private BCryptPasswordEncoder encoder;
+
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Locadora locadora) {
@@ -52,7 +51,7 @@ public class LocadoraController {
 
 		System.out.println("password = " + locadora.getPassword());
 		
-		locadora.setPassword(encoder.encode(locadora.getPassword()));
+		
 		service.salvar(locadora);
 		attr.addFlashAttribute("sucess", "Locadora inserido com sucesso.");
 		return "redirect:/locadoras/listar";

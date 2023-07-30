@@ -57,10 +57,9 @@
 
 					<div class="form-group col-md-6">
 						<label th:text="#{locadora.password.label}" for="password"></label> 
-						<input type="password" class="form-control" id="password"
+						<input type="text" class="form-control" id="password" th:field="*{password}"
 							th:placeholder="#{locadora.password.label}" autofocus="autofocus"
-							th:field="*{password}"
-							th:classappend="${#fields.hasErrors('password')} ? is-invalid" th:readonly="${locadora.id != null}" required/>
+							th:classappend="${#fields.hasErrors('password')} ? is-invalid" required/>
 						
 						<div class="invalid-feedback">
 							<span th:errors="*{password}"></span>
@@ -90,7 +89,7 @@
                             data-mask="000.000.000-00" data-mask-reverse="true" pattern="[0-9]{13}" required/>
                         <div class="invalid-feedback">
                             <span th:errors="*{cnpj}"></span>
-							<span th:if="${#fields.hasErrors('cnpj')}">CNPJ deve conter exatamente 13 dígitos numéricos.</span>
+							<span th:if="${#fields.hasErrors('cnpj')}"></span>
                         </div>
                     </div>
 
