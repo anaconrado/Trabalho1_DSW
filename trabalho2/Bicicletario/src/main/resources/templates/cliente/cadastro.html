@@ -99,14 +99,16 @@
 						</div>
 					</div>
 					
-                    <div class="form-group col-md-6">
+					<div class="form-group col-md-6">
 						<label th:text="#{cliente.genero.label}" for="genero"></label> 
-						<input type="text" class="form-control" id="genero" th:field="*{genero}"
-							th:placeholder="#{cliente.genero.label}" autofocus="autofocus"
-							th:classappend="${#fields.hasErrors('genero')} ? is-invalid" required/>
-							
+						<select id="genero" class="form-control" th:field="*{genero}" th:placeholder="#{cliente.genero.label}"
+							th:classappend="${#fields.hasErrors('genero')} ? is-invalid">
+							<option value="M">M</option>
+							<option value="F">F</option>
+						</select>
+
 						<div class="invalid-feedback">
-							<span th:errors="*{genero}"></span>
+							<span th:errors="*{role}"></span>
 						</div>
 					</div>
 					          
@@ -126,7 +128,7 @@
 						<label th:text="#{cliente.role.label}" for="role"></label> 
 						<select id="role" class="form-control" th:field="*{role}"
 							th:classappend="${#fields.hasErrors('role')} ? is-invalid" required>
-							<option value="ROLE_ADMIN">ROLE_CLIENTE</option>
+							<option value="ROLE_CLIENTE">ROLE_CLIENTE</option>
 						</select>
 
 						<div class="invalid-feedback">
