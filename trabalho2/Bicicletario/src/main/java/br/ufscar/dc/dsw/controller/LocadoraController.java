@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufscar.dc.dsw.domain.Locadora;
@@ -30,12 +31,29 @@ public class LocadoraController {
 	public String cadastrar(Locadora locadora) {
 		return "locadora/cadastro";
 	}
-	
+	/*
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
 		model.addAttribute("locadoras",service.buscarTodos());
 		return "locadora/lista";
+	}*/
+
+	@GetMapping("/listar")
+	public String listar(@RequestParam(value = "cidade", required = false) String cidade, ModelMap model) {
+		if (cidade == null) {
+			model.addAttribute("locadoras", service.buscarTodos());
+		} else {
+			model.addAttribute("locadoras", service.buscarPorCidade(cidade));
+		}
+		return "locadora/lista";
 	}
+
+	/* 
+	@GetMapping("/listarCidade")
+	public String listarCidade(ModelMap model, String cidade){
+		//model.addAttributes(attributeName:"locadoras", service.buscaPorCidade(cidade));
+		return "locadora/listaCidade";
+	}*/
 
 	@GetMapping("/")
 	public String listarIndex(ModelMap model) {
