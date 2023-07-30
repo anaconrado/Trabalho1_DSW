@@ -23,6 +23,7 @@
 		<div sec:authorize="hasRole('ROLE_CLIENTE')">
 			<p><a th:href="@{/user}"><span th:text="#{home.message.3}"></a></p>
 		</div>
+    
 		<div sec:authorize="hasRole('ROLE_LOCADORA')">
 			<p><a th:href="@{/user}"><span th:text="#{home.message.3}"></a></p>
 		</div>

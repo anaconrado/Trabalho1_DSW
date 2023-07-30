@@ -13,8 +13,12 @@
 			<span th:text="#{home.hello}"></span>
 			<span th:inline="text">[[${#httpServletRequest.remoteUser}]]!</span>
 		</h1>
+		
+		<a class="btn btn-primary mb-2" type="button" 
+					th:href="@{/locacoes/listar}" th:text="#{locacao.listar.label}"></a>
 		<a class="btn btn-primary" type="button"
-				href="javascript:history.back()"><span th:text="#{previous.message}"></span></a>
+				href="javascript:history.back()"><span th:text="#{previous.message}"></span>
+		</a>
 	</div>
 </body>
 </html>

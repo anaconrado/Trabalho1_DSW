@@ -30,10 +30,25 @@ public class LocadoraService implements ILocadoraService {
 	@Transactional(readOnly = true)
 	public List<Locadora> buscarTodos() {
 		return dao.findAll();
+
 	}    
 
 	@Transactional(readOnly = true)
 	public Locadora buscarPorEmail(String email){
 		return dao.findByEmail(email);
 	}
+
+	}
+
+	@Override
+	public List<Locadora> buscarPorCidade(String cidade) {
+    	return dao.findByCidade(cidade);
+	}
+
+	/*
+	@Transactional(readOnly = true)
+	public List<Locadora> buscaPorCidade(String cidade){
+		return dao.findByCidade(cidade);
+	}*/
+
 }
