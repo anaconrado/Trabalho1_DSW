@@ -57,10 +57,9 @@
 
 					<div class="form-group col-md-6">
 						<label th:text="#{locadora.password.label}" for="password"></label> 
-						<input type="password" class="form-control" id="password"
+						<input type="text" class="form-control" id="password" th:field="*{password}"
 							th:placeholder="#{locadora.password.label}" autofocus="autofocus"
-							th:field="*{password}"
-							th:classappend="${#fields.hasErrors('password')} ? is-invalid" th:readonly="${locadora.id != null}" required/>
+							th:classappend="${#fields.hasErrors('password')} ? is-invalid" required/>
 						
 						<div class="invalid-feedback">
 							<span th:errors="*{password}"></span>
@@ -82,15 +81,14 @@
                         <label th:text="#{locadora.CNPJ.label}" for="cnpj"></label> 
                         <input th:if="${locadora.id != null}" readonly type="text" class="form-control" id="cnpj" th:field="*{cnpj}"
                             autofocus="autofocus" placeholder="__. ___. ___/____-__"
-                            th:classappend="${#fields.hasErrors('cnpj')} ? is-invalid" 
-                            data-mask="000.000.000-00" data-mask-reverse="true" pattern="[0-9]{13}" required/>	
+                            />	
                         <input th:unless="${locadora.id != null}" type="text" class="form-control" id="cnpj" th:field="*{cnpj}"
                             autofocus="autofocus" placeholder="__. ___. ___/____-__"
                             th:classappend="${#fields.hasErrors('cnpj')} ? is-invalid" 
-                            data-mask="000.000.000-00" data-mask-reverse="true" pattern="[0-9]{13}" required/>
+                            data-mask="000.000.000-00" data-mask-reverse="true" pattern="[0-9]{13}" title="#{locadora.cnpj.invalido}"  required/>
                         <div class="invalid-feedback">
                             <span th:errors="*{cnpj}"></span>
-							<span th:if="${#fields.hasErrors('cpf')}">CPF deve conter exatamente 13 dígitos numéricos.</span>
+							<span th:if="${#fields.hasErrors('cnpj')}"></span>
                         </div>
                     </div>
 
@@ -110,7 +108,7 @@
 						<label th:text="#{locadora.role.label}" for="role"></label> 
 						<select id="role" class="form-control" th:field="*{role}"
 							th:classappend="${#fields.hasErrors('role')} ? is-invalid" required>
-							<option value="ROLE_ADMIN">ROLE_LOCADORA</option>
+							<option value="ROLE_LOCADORA">ROLE_LOCADORA</option>
 						</select>
 
 						<div class="invalid-feedback">

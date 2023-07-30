@@ -17,7 +17,7 @@
                         th:href="@{''(lang=en)}"><img alt=""
                         th:src="@{/image/EUA.gif}" style="width: 30px;" /></a>
                 </div>
-                <h2><span th:text="#{locadora.lista.label}"></h2>
+                <h2><span th:text="#{locadora.listar.label}"></h2>
             </div>
 
             <form method="get" th:action="@{/locadoras/listar}" class="form-inline my-2 my-lg-0">
@@ -59,9 +59,6 @@
         </div>
     </section>
 	<a class="btn btn-primary mb-2" type="button"
-        href="javascript:history.back()"><span th:text="#{previous.message}"></span></a>
-
-    <a class="btn btn-primary mb-2" type="button"
-        th:href="@{/home}"><span th:text="#{home.message}"></span></a>
+        th:href="@{/admin}"><span th:text="#{previous.message}"></span></a>
 </body>
 </html>

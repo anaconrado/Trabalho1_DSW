@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.ufscar.dc.dsw.dao.ILocacaoDAO;
 import br.ufscar.dc.dsw.domain.Locacao;
-import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.service.spec.ILocacaoService;
 
 @Service
