@@ -90,7 +90,7 @@
                             data-mask="000.000.000-00" data-mask-reverse="true" pattern="[0-9]{13}" required/>
                         <div class="invalid-feedback">
                             <span th:errors="*{cnpj}"></span>
-							<span th:if="${#fields.hasErrors('cpf')}">CPF deve conter exatamente 13 dígitos numéricos.</span>
+							<span th:if="${#fields.hasErrors('cnpj')}">CNPJ deve conter exatamente 13 dígitos numéricos.</span>
                         </div>
                     </div>
 
