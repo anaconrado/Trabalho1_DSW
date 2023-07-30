@@ -4,55 +4,41 @@
       layout:decorate="~{fragments/layout}">
 <head>
     <title>Index</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<div layout:fragment="content" th:remove="tag">
-    <h1 th:text="#{index.message.1}"></h1>
-    <p th:text="#{index.message.2}"></p>
-    <ul>
-        <li><a th:href="@{/home}"><span th:text="#{index.message.3}"></a></li>
-    </ul>
-    
-    <h2>Lista de Clientes</h2>
-    <section class="layout-content" layout:fragment="corpo">
-
-        <div class="container" id="listagem" align="center">
-
-            <div class="table-responsive">
-                <table class="table table-striped" border="1">
-					<caption>Tabela de Locadoras</caption>
-					<thead>
-                        <tr>
-                            <th>#</th>
-                            <th th:text="#{locadora.email.label}"></th>
-                            <th th:text="#{locadora.nome.label}"></th>
-                            <th th:text="#{locadora.CNPJ.label}"></th>
-                            <th th:text="#{locadora.cidade.label}"></th>
-                            <th th:text="#{acao.label}"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="locadora : ${locadoras}">
-                            <td th:text="${locadora.id}"></td>
-                            <td th:text="${locadora.email}"></td>
-                            <td th:text="${locadora.nome}"></td>
-                            <td th:text="${locadora.cnpj}"></td>
-                            <td th:text="${locadora.cidade}"></td>
-                            <td>
-                                <a class="btn btn-info btn-sm" th:href="@{/locadoras/editar/{id}(id=${locadora.id})}" role="button"> 
-                                    <span class="oi oi-brush" th:title="#{link.editar.label}" aria-hidden="true"> Editar </span>
-                                </a>
-                                <button th:id="${'btn_locadoras/excluir/' + locadora.id}" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
-                                    <span class="oi oi-circle-x" th:title="#{link.excluir.label}" aria-hidden="true">Remover</span>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+    <div layout:fragment="content" th:remove="tag">
+        <h1 th:text="#{index.message.1}"></h1>
+        <p th:text="#{index.message.2}"></p>
+        <ul>
+            <li><a th:href="@{/home}"><span th:text="#{index.message.3}"></a></li>
+        </ul>
+        <h2 class="text-left" th:text="#{locadora.lista.label}"></h2>
+        <section class="layout-content" layout:fragment="corpo">
+            <div class="container" id="listagem" >
+                <div class="table-responsive">
+                    <table class="table table-striped" border="1">
+                        <thead>
+                            <tr>
+                                <th th:text="#{locadora.email.label}"></th>
+                                <th th:text="#{locadora.nome.label}"></th>
+                                <th th:text="#{locadora.CNPJ.label}"></th>
+                                <th th:text="#{locadora.cidade.label}"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="locadora : ${locadoras}">
+                                <td th:text="${locadora.email}"></td>
+                                <td th:text="${locadora.nome}"></td>
+                                <td th:text="${locadora.cnpj}"></td>
+                                <td th:text="${locadora.cidade}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </section>
-
-</div>
+        </section>
+    </div>
 </body>
 </html>

@@ -31,7 +31,7 @@
 			</div>
 		</nav>
 
-	<h2><span th:text="#{locadora.cadastrar.label}"></h2>
+	<h2><span th:text="#{locadora.cadastro.label}"></h2>
 	<section class="layout-content" layout:fragment="corpo">
 
 		<div class="container" id="cadastro">
@@ -57,11 +57,11 @@
 
 					<div class="form-group col-md-6">
 						<label th:text="#{locadora.password.label}" for="password"></label> 
-						<input type="text" class="form-control" id="password"
+						<input type="password" class="form-control" id="password"
 							th:placeholder="#{locadora.password.label}" autofocus="autofocus"
 							th:field="*{password}"
 							th:classappend="${#fields.hasErrors('password')} ? is-invalid" th:readonly="${locadora.id != null}" required/>
-							
+						
 						<div class="invalid-feedback">
 							<span th:errors="*{password}"></span>
 						</div>

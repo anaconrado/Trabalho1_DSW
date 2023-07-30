@@ -14,21 +14,21 @@ import br.ufscar.dc.dsw.validation.UniqueCnpj;
 public class Locadora extends Usuario {
 
 	@NotBlank
-    @UniqueCnpj (message = "{Unique.locadora.CNPJ}")
+    @UniqueCnpj (message = "CNPJ já cadastrado")
 	//trocar o tamanho depois min = 18 tambem
-	@Size(min = 3, max = 18, message = "{Size.locadora.CNPJ}")
+	@Size(min = 3, max = 18, message = "Número de caracteres inválido")
 	@Column(nullable = false, unique = true, length = 60)
-	private String CNPJ;
+	private String cnpj;
 
     @Column(nullable = true, length = 50)
     private String cidade;
 
 	public String getCnpj() {
-		return CNPJ;
+		return cnpj;
 	}
 
-	public void setCnpj(String CNPJ) {
-		this.CNPJ = CNPJ;
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
 	}
 
     public String getCidade(){

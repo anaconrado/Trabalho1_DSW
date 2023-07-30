@@ -14,10 +14,10 @@ import javax.persistence.Table;
 public class Cliente extends Usuario {
     
     @NotBlank
-	@UniqueCpf(message = "{CPF já cadastrado}")
-	@Size(min = 3, max = 18, message = "{Size.cliente.CPF}")
+	@UniqueCpf(message = "CPF já cadastrado")
+	@Size(min = 3, max = 18, message = "Número de caracteres inváE1lido")
     @Column(nullable = false, length = 45 )
-    private String CPF;
+    private String cpf;
     
     @Column(nullable = false, length = 64)
     private String telefone;
@@ -29,11 +29,11 @@ public class Cliente extends Usuario {
     private String dataNasc;
 	
 	public String getCpf() {
-		return CPF;
+		return cpf;
 	}
 	
-	public void setCpf(String CPF) {
-		this.CPF = CPF;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 	
 	public String getTelefone() {
