@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import br.ufscar.dc.dsw.dao.IClienteDAO;
 import br.ufscar.dc.dsw.dao.ILocadoraDAO;
 import br.ufscar.dc.dsw.dao.IUsuarioDAO;
+import br.ufscar.dc.dsw.dao.ILocacaoDAO;
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.Locadora;
@@ -26,7 +27,7 @@ public class BicicletarioApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(IUsuarioDAO UsuarioDao, IClienteDAO ClienteDao, ILocadoraDAO LocadoraDao, BCryptPasswordEncoder encoder) {
+	public CommandLineRunner demo(IUsuarioDAO UsuarioDao, IClienteDAO ClienteDao, ILocadoraDAO LocadoraDao, ILocacaoDAO LocacaoDao, BCryptPasswordEncoder encoder) {
 		return (args) -> {
 			
 			Cliente c1 = new Cliente();
@@ -81,6 +82,8 @@ public class BicicletarioApplication {
 			lo1.setValor(BigDecimal.valueOf(54.9));
 			lo1.setCliente(c1);
 			lo1.setLocadora(l1);
+			LocacaoDao.save(lo1);
+
 		};
 	}
 }

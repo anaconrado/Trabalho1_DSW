@@ -41,7 +41,7 @@ public class LocacaoController {
 		Usuario usuario = this.getUsuario();
 		String role = usuario.getRole(); 
 		
-		if (role.equals("ROLE_LCOADORA"))
+		if (role.equals("ROLE_CLIENTE"))
 			model.addAttribute("locacoes",service.buscarTodosPorCliente(usuario.getId()));
 		else 
 			model.addAttribute("locacoes",service.buscarTodosPorLocadora(usuario.getId()));
