@@ -83,13 +83,14 @@
                         <input th:if="${locadora.id != null}" readonly type="text" class="form-control" id="cnpj" th:field="*{cnpj}"
                             autofocus="autofocus" placeholder="__. ___. ___/____-__"
                             th:classappend="${#fields.hasErrors('cnpj')} ? is-invalid" 
-                            data-mask="000.000.000-00" data-mask-reverse="true" required/>	
+                            data-mask="000.000.000-00" data-mask-reverse="true" pattern="[0-9]{13}" required/>	
                         <input th:unless="${locadora.id != null}" type="text" class="form-control" id="cnpj" th:field="*{cnpj}"
                             autofocus="autofocus" placeholder="__. ___. ___/____-__"
                             th:classappend="${#fields.hasErrors('cnpj')} ? is-invalid" 
-                            data-mask="000.000.000-00" data-mask-reverse="true" required/>
+                            data-mask="000.000.000-00" data-mask-reverse="true" pattern="[0-9]{13}" required/>
                         <div class="invalid-feedback">
                             <span th:errors="*{cnpj}"></span>
+							<span th:if="${#fields.hasErrors('cpf')}">CPF deve conter exatamente 13 dígitos numéricos.</span>
                         </div>
                     </div>
 
