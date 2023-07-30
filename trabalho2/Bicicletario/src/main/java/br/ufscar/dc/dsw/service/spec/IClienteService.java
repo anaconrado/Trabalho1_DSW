@@ -7,4 +7,5 @@ public interface IClienteService {
     void excluir(Long id);
 	Cliente buscarPorId(Long id);
 	List<Cliente> buscarTodos();
+    Cliente buscarPorEmail(String email);
 }

@@ -3,7 +3,6 @@ package br.ufscar.dc.dsw.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -65,9 +64,16 @@ public class LocadoraController {
 	
 	@PostMapping("/editar")
 	public String editar(@Valid Locadora locadora, BindingResult result, RedirectAttributes attr) {
-		
-		System.out.println(locadora.getPassword());
-		
+		if (result.hasErrors()) {
+			
+			Locadora locadora2 = service.buscarPorEmail(locadora.getEmail());
+			if(locadora2 != null){
+				if(locadora.getId() != locadora2.getId()){	
+					return "locadora/cadastro";
+				}
+			}
+			
+		}	
 		service.salvar(locadora);
 		attr.addFlashAttribute("sucess", "Locadora editado com sucesso.");
 		return "redirect:/locadoras/listar";

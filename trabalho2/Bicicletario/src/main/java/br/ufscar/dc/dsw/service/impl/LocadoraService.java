@@ -31,4 +31,9 @@ public class LocadoraService implements ILocadoraService {
 	public List<Locadora> buscarTodos() {
 		return dao.findAll();
 	}    
+
+	@Transactional(readOnly = true)
+	public Locadora buscarPorEmail(String email){
+		return dao.findByEmail(email);
+	}
 }

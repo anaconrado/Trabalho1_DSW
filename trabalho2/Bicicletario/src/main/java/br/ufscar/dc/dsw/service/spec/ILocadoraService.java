@@ -7,4 +7,5 @@ public interface ILocadoraService {
     void excluir(Long id);
 	Locadora buscarPorId(Long id);
 	List<Locadora> buscarTodos();
+    Locadora buscarPorEmail(String email);
 }

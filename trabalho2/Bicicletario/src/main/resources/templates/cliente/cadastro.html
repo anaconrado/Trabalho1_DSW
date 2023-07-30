@@ -77,13 +77,11 @@
 					<div class="form-group col-md-6">
                         <label th:text="#{cliente.cpf.label}" for="cpf"></label> 
                         <input th:if="${cliente.id != null}" readonly type="text" class="form-control" id="cpf" th:field="*{cpf}"
-                            autofocus="autofocus" placeholder="___.___.___-__"
-                            th:classappend="${#fields.hasErrors('cpf')} ? is-invalid" 
-                            data-mask="000.000.000-00" data-mask-reverse="true" pattern="[0-9]{11}" required/>	
+                            autofocus="autofocus" placeholder="___.___.___-__"/>	
                         <input th:unless="${cliente.id != null}" type="text" class="form-control" id="cpf" th:field="*{cpf}"
                             autofocus="autofocus" placeholder="___.___.___-__"
                             th:classappend="${#fields.hasErrors('cpf')} ? is-invalid" 
-                            data-mask="000.000.000-00" data-mask-reverse="true" pattern="[0-9]{11}" title="Deve ter 11 dígitos" required/>
+                            data-mask="000.000.000-00" data-mask-reverse="true" pattern="[0-9]{11}" title="#{cliente.cpf.invalido}" required/>
                         <div class="invalid-feedback">
                             <span th:errors="*{cpf}"></span>
 							<span th:if="${#fields.hasErrors('cpf')}"></span>
@@ -94,7 +92,7 @@
 						<label th:text="#{cliente.telefone.label}" for="telefone"></label> 
 						<input type="text" class="form-control" id="telefone" th:field="*{telefone}"
 							th:placeholder="#{cliente.telefone.label}" autofocus="autofocus"
-							th:classappend="${#fields.hasErrors('telefone')} ? is-invalid" pattern="[0-9]*" title="CPF inválido" required/>
+							th:classappend="${#fields.hasErrors('telefone')} ? is-invalid" pattern="[0-9]*" title="#{cliente.cpf.invalido}" required/>
 							
 						<div class="invalid-feedback">
 							<span th:errors="*{telefone}"></span>

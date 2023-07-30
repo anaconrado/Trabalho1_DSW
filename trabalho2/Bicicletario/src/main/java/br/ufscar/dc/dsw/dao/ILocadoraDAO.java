@@ -19,6 +19,6 @@ public interface ILocadoraDAO extends CrudRepository<Locadora, Long>{
 	@Query("SELECT locadora FROM Locadora locadora WHERE locadora.cnpj = :cnpj")
 	Locadora findByCNPJ(@Param ("cnpj") String cnpj);
 
-	/*@Query("SELECT l FROM Locadora WHERE l.CNPJ = :CNPJ")
-	Locadora findByEmail(@Param ("email") String email);*/
+	@Query("SELECT locadora FROM Locadora locadora WHERE locadora.email = :email")
+	Locadora findByEmail(@Param ("email") String email);
 }

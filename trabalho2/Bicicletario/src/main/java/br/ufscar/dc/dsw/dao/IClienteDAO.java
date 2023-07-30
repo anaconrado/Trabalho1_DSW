@@ -19,4 +19,7 @@ public interface IClienteDAO extends CrudRepository<Cliente, Long>{
 	@Query("SELECT cliente FROM Cliente cliente WHERE cliente.cpf = :cpf")
     public Cliente findByCpf(@Param("cpf") String cpf);
 
+	@Query("SELECT cliente FROM Cliente cliente WHERE cliente.email = :email")
+	Cliente findByEmail(@Param ("email") String email);
+
 }
