@@ -6,11 +6,18 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-	<h2>Lista de Clientes</h2>
     <section class="layout-content" layout:fragment="corpo">
 
         <div class="container" id="listagem" align="center">
-
+            <div class="container" id="listagem" >
+                <div class="navbar-header">
+                    <div style="right: 20px; position: absolute">
+                        <a th:href="@{''(lang=pt)}"><img alt=""
+                            th:src="@{/image/Brasil.gif}" style="width: 30px;" /></a> <a
+                            th:href="@{''(lang=en)}"><img alt=""
+                            th:src="@{/image/EUA.gif}" style="width: 30px;" /></a>
+            </div>
+            <h2><span th:text="#{cliente.lista.label}"></h2>
             <div class="table-responsive">
                 <table class="table table-striped" border="1">
 					<thead>
@@ -18,7 +25,7 @@
                             <th>#</th>
                             <th th:text="#{cliente.email.label}"></th>
                             <th th:text="#{cliente.nome.label}"></th>
-                            <th th:text="#{cliente.CPF.label}"></th>
+                            <th th:text="#{cliente.cpf.label}"></th>
                             <th th:text="#{cliente.telefone.label}"></th>
                             <th th:text="#{cliente.genero.label}"></th>
                             <th th:text="#{cliente.dataNasc.label}"></th>

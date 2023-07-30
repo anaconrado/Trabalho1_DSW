@@ -33,7 +33,13 @@ public class LocadoraController {
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		model.addAttribute("clientes",service.buscarTodos());
+		model.addAttribute("locadoras",service.buscarTodos());
+		return "locadora/lista";
+	}
+
+	@GetMapping("/")
+	public String listarIndex(ModelMap model) {
+		model.addAttribute("locadoras",service.buscarTodos());
 		return "locadora/lista";
 	}
 	
@@ -49,7 +55,7 @@ public class LocadoraController {
 		locadora.setPassword(encoder.encode(locadora.getPassword()));
 		service.salvar(locadora);
 		attr.addFlashAttribute("sucess", "Locadora inserido com sucesso.");
-		return "redirect:/clientes/listar";
+		return "redirect:/locadoras/listar";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -65,7 +71,7 @@ public class LocadoraController {
 		
 		service.salvar(locadora);
 		attr.addFlashAttribute("sucess", "Locadora editado com sucesso.");
-		return "redirect:/clientes/listar";
+		return "redirect:/locadoras/listar";
 	}
 	
 	@GetMapping("/excluir/{id}")
