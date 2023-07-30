@@ -116,7 +116,8 @@
 						<label th:text="#{cliente.dataNasc.label}" for="dataNasc"></label> 
 						<input type="text" class="form-control" id="dataNasc" th:field="*{dataNasc}"
 							th:placeholder="#{cliente.dataNasc.label}" autofocus="autofocus"
-							th:classappend="${#fields.hasErrors('dataNasc')} ? is-invalid" required/>
+							th:classappend="${#fields.hasErrors('dataNasc')} ? is-invalid" pattern="\d{2}/\d{2}/\d{4}" 
+							title="Digite uma data válida (dd/mm/aaaa)" required/>
 							
 						<div class="invalid-feedback">
 							<span th:errors="*{dataNasc}"></span>
