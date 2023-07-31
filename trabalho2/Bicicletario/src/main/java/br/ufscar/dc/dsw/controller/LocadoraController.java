@@ -3,6 +3,7 @@ package br.ufscar.dc.dsw.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,8 @@ public class LocadoraController {
 	@Autowired
 	private ILocadoraService service;
 	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 
 	
 	@GetMapping("/cadastrar")
@@ -67,7 +70,7 @@ public class LocadoraController {
 
 		System.out.println("password = " + locadora.getPassword());
 		
-		
+		locadora.setPassword(encoder.encode(locadora.getPassword()));
 		service.salvar(locadora);
 		attr.addFlashAttribute("sucess", "Locadora inserido com sucesso.");
 		return "redirect:/locadoras/listar";

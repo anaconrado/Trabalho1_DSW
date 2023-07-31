@@ -85,7 +85,7 @@
                         <input th:unless="${locadora.id != null}" type="text" class="form-control" id="cnpj" th:field="*{cnpj}"
                             autofocus="autofocus" placeholder="__. ___. ___/____-__"
                             th:classappend="${#fields.hasErrors('cnpj')} ? is-invalid" 
-                            data-mask="000.000.000-00" data-mask-reverse="true" pattern="[0-9]{13}" title="#{locadora.cnpj.invalido}"  required/>
+                            data-mask="000.000.000-00" data-mask-reverse="true"  title="#{locadora.cnpj.invalido}"  required/>
                         <div class="invalid-feedback">
                             <span th:errors="*{cnpj}"></span>
 							<span th:if="${#fields.hasErrors('cnpj')}"></span>
