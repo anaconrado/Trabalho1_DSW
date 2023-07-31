@@ -141,13 +141,6 @@ public class BicicletarioApplication {
 			lo2.setData("22/01/2022 12:00");
 			lo2.setValor(BigDecimal.valueOf(66.6));
 			lo2.setCliente(c1);
-			lo2.setLocadora(l1);
-			LocacaoDao.save(lo2);
-
-			Locacao lo2 = new Locacao();
-			lo2.setData("02/12/2021");
-			lo2.setValor(BigDecimal.valueOf(12.0));
-			lo2.setCliente(c1);
 			lo2.setLocadora(l2);
 			LocacaoDao.save(lo2);
 
