@@ -128,13 +128,26 @@ public class BicicletarioApplication {
 			l4.setCidade("São Paulo");
 			LocadoraDao.save(l4);
 
-
 			Locacao lo1 = new Locacao();
 			lo1.setData("30/01/2022");
 			lo1.setValor(BigDecimal.valueOf(54.9));
 			lo1.setCliente(c1);
 			lo1.setLocadora(l1);
 			LocacaoDao.save(lo1);
+
+			Locacao lo2 = new Locacao();
+			lo2.setData("02/12/2021");
+			lo2.setValor(BigDecimal.valueOf(12.0));
+			lo2.setCliente(c1);
+			lo2.setLocadora(l2);
+			LocacaoDao.save(lo2);
+
+			Locacao lo3 = new Locacao();
+			lo3.setData("12/11/2021");
+			lo3.setValor(BigDecimal.valueOf(15.8));
+			lo3.setCliente(c1);
+			lo3.setLocadora(l3);
+			LocacaoDao.save(lo3);
 
 		};
 	}
