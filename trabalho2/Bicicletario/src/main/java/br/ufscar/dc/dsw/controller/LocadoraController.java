@@ -16,6 +16,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.ufscar.dc.dsw.domain.Locadora;
 import br.ufscar.dc.dsw.service.spec.ILocadoraService;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/locadoras")
 public class LocadoraController {
@@ -38,11 +40,15 @@ public class LocadoraController {
 
 	@GetMapping("/listar")
 	public String listar(@RequestParam(value = "cidade", required = false) String cidade, ModelMap model) {
-		if (cidade == null) {
+		if (cidade == null || cidade=="" || cidade.equalsIgnoreCase("tudo")) {
 			model.addAttribute("locadoras", service.buscarTodos());
 		} else {
 			model.addAttribute("locadoras", service.buscarPorCidade(cidade));
 		}
+
+		List<String> cidadesDisponiveis = service.buscarCidadesDisponiveis();
+		model.addAttribute("cidades", cidadesDisponiveis);
+
 		return "locadora/lista";
 	}
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+
 </head>
 <body>
 	
@@ -24,6 +25,15 @@
                 <input type="text" name="cidade" class="form-control mr-sm-2" placeholder="Digite a cidade">
                 <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Pesquisar</button>
             </form>
+            <!--
+            <div class="form-group">
+                <label for="selectCidade">Selecione a cidade:</label>
+                <select th:action="@{/locadoras/listar}"  class="form-control" id="selectCidade" name="cidade">
+                    <option value="">Todas as cidades</option>
+                    <option th:each="cidade : ${cidades}" th:value="${cidade}" th:text="${cidade}"></option>
+                </select>
+            </div>
+            -->
 
             <div class="table-responsive">
                 <table class="table table-striped" border="1">
