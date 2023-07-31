@@ -1,4 +1,6 @@
 package br.ufscar.dc.dsw;
+//The declared package "" does not match the expected package "br.ufscar.dc.dsw"	BicicletarioApplication.java	/Bicicletario/src/main/java/br/ufscar/dc/dsw	line 1	Java Problem
+
 
 import java.math.BigDecimal;
 
@@ -83,6 +85,13 @@ public class BicicletarioApplication {
 			lo1.setCliente(c1);
 			lo1.setLocadora(l1);
 			LocacaoDao.save(lo1);
+			
+			Locacao lo2 = new Locacao();
+			lo2.setData("22/01/2022");
+			lo2.setValor(BigDecimal.valueOf(66.6));
+			lo2.setCliente(c1);
+			lo2.setLocadora(l1);
+			LocacaoDao.save(lo2);
 
 		};
 	}

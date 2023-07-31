@@ -21,4 +21,6 @@ public interface ILocacaoDAO extends CrudRepository<Locacao, Long>{
     List<Locacao> findAllByLocadora(Long locadoraId);
 	
 	Locacao save(Locacao locacao);
+	
+	void deleteById(Long id);
 }

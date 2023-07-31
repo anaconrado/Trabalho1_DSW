@@ -26,6 +26,7 @@
                             <th>#</th>
                             <th th:text="#{locacao.data.label}"></th>
                             <th th:text="#{locacao.valor.label}"></th>
+                            <th th:text="#{acao.label}"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +34,14 @@
                             <td th:text="${locacao.id}"></td>
                             <td th:text="${locacao.data}"></td>
                             <td th:text="|R$ ${#numbers.formatDecimal(locacao.valor,2,2,'COMMA')}|"></td>
-                            <td>
+                                <td>
+                                    <a class="btn btn-info btn-sm" th:href="@{/locacoes/editar/{id}(id=${locacao.id})}" role="button"> 
+                                        <span class="oi oi-brush" th:text="#{link.editar.label}" aria-hidden="true"></span>
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" th:href="@{/locacoes/excluir/{id}(id=${locacao.id})}" role="button"> 
+                                        <span class="oi oi-brush" th:text="#{link.excluir.label}" aria-hidden="true"></span>
+                                    </a>
+                                </td>
                         </tr>
                     </tbody>
                 </table>
