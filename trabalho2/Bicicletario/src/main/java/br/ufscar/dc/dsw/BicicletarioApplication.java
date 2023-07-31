@@ -80,14 +80,14 @@ public class BicicletarioApplication {
 			LocadoraDao.save(l2);
 
 			Locacao lo1 = new Locacao();
-			lo1.setData("30/01/2022");
+			lo1.setData("30/07/2023 15:00");
 			lo1.setValor(BigDecimal.valueOf(54.9));
 			lo1.setCliente(c1);
 			lo1.setLocadora(l1);
 			LocacaoDao.save(lo1);
 			
 			Locacao lo2 = new Locacao();
-			lo2.setData("22/01/2022");
+			lo2.setData("22/01/2022 12:00");
 			lo2.setValor(BigDecimal.valueOf(66.6));
 			lo2.setCliente(c1);
 			lo2.setLocadora(l1);

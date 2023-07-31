@@ -2,6 +2,8 @@ package br.ufscar.dc.dsw.domain;
 
 import java.math.BigDecimal;
 
+import br.ufscar.dc.dsw.validation.UniqueLocacao;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -11,6 +13,7 @@ import javax.validation.constraints.NotNull;
 
 @SuppressWarnings("serial")
 @Entity
+@UniqueLocacao
 @Table(name = "Locacao")
 public class Locacao extends AbstractEntity<Long> {
 
