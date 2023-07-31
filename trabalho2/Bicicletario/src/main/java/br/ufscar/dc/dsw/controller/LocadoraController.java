@@ -30,13 +30,13 @@ public class LocadoraController {
 		return "locadora/cadastro";
 	}
 	
-	@GetMapping("/listar")
+	/*@GetMapping("/listar")
 	public String listar(ModelMap model) {
 		model.addAttribute("locadoras",service.buscarTodos());
 		return "locadora/lista";
-	}
+	}*/
 
-	@GetMapping("/")
+	@GetMapping("/listar")
 	public String listar(@RequestParam(value = "cidade", required = false) String cidade, ModelMap model) {
 		if (cidade == null) {
 			model.addAttribute("locadoras", service.buscarTodos());
