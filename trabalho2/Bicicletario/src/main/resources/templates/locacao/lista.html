@@ -26,6 +26,8 @@
                             <th>#</th>
                             <th th:text="#{locacao.data.label}"></th>
                             <th th:text="#{locacao.valor.label}"></th>
+                            <th sec:authorize="hasRole('ROLE_CLIENTE')" th:text="#{locacao.locadora.label}"></th>
+                            <th sec:authorize="hasRole('ROLE_LOCADORA')" th:text="#{locacao.cliente.label}"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +35,8 @@
                             <td th:text="${locacao.id}"></td>
                             <td th:text="${locacao.data}"></td>
                             <td th:text="|R$ ${#numbers.formatDecimal(locacao.valor,2,2,'COMMA')}|"></td>
-                            <td>
+                            <td sec:authorize="hasRole('ROLE_CLIENTE')" th:text="${locacao.locadora.nome}"></td>
+                            <td sec:authorize="hasRole('ROLE_LOCADORA')" th:text="${locacao.cliente.nome}"></td>
                         </tr>
                     </tbody>
                 </table>

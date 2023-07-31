@@ -5,9 +5,13 @@ import javax.validation.constraints.Size;
 
 import br.ufscar.dc.dsw.validation.UniqueCpf;
 
+import javax.persistence.OneToMany;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.CascadeType;
+
  
 @Entity
 @Table(name = "Cliente")
@@ -27,6 +31,9 @@ public class Cliente extends Usuario {
     
     @Column(nullable = false, length = 15)
     private String dataNasc;
+
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Locacao> locacoes;
 	
 	public String getCpf() {
 		return cpf;
@@ -59,4 +66,12 @@ public class Cliente extends Usuario {
 	public void setDataNasc(String dataNasc) {
 		this.dataNasc = dataNasc;
 	}
+
+	public List<Locacao> getLocacoes() {
+        return locacoes;
+    }
+
+    public void setLocacoes(List<Locacao> locacoes) {
+        this.locacoes = locacoes;
+    }
 }
