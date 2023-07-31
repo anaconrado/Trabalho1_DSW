@@ -31,8 +31,8 @@ public class LocadoraController {
 	public String cadastrar(Locadora locadora) {
 		return "locadora/cadastro";
 	}
-	/*
-	@GetMapping("/listar")
+	
+	/*@GetMapping("/listar")
 	public String listar(ModelMap model) {
 		model.addAttribute("locadoras",service.buscarTodos());
 		return "locadora/lista";
@@ -52,18 +52,11 @@ public class LocadoraController {
 		return "locadora/lista";
 	}
 
-	/* 
-	@GetMapping("/listarCidade")
-	public String listarCidade(ModelMap model, String cidade){
-		//model.addAttributes(attributeName:"locadoras", service.buscaPorCidade(cidade));
-		return "locadora/listaCidade";
-	}*/
-
-	@GetMapping("/")
+	/*@GetMapping("/listar")
 	public String listarIndex(ModelMap model) {
 		model.addAttribute("locadoras",service.buscarTodos());
 		return "locadora/lista";
-	}
+	}*/
 	
 	@PostMapping("/salvar")
 	public String salvar(@Valid Locadora locadora, BindingResult result, RedirectAttributes attr) {
@@ -107,6 +100,6 @@ public class LocadoraController {
 	public String excluir(@PathVariable("id") Long id, ModelMap model) {
 		service.excluir(id);
 		model.addAttribute("sucess", "Usuário excluído com sucesso.");
-		return listar("", model);
+		return listar(null, model);
 	}
 }

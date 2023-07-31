@@ -12,5 +12,9 @@ public interface ILocacaoService {
 
 	List<Locacao> buscarTodosPorLocadora(Long id);
 	
+    List<Locacao> buscarLocacoesPorClienteELocadoraEData(Long clienteId, Long locadoraId, String data);
+	
 	void salvar(Locacao locacao);
+	
+    void excluir(Long id);
 }

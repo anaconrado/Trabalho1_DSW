@@ -21,4 +21,9 @@ public interface ILocacaoDAO extends CrudRepository<Locacao, Long>{
     List<Locacao> findAllByLocadora(Long locadoraId);
 	
 	Locacao save(Locacao locacao);
+	
+	void deleteById(Long id);
+
+	@Query("SELECT locacao FROM Locacao locacao WHERE (locacao.locadora.id = ?1 OR locacao.cliente.id = ?2) AND (locacao.data = ?3) ")
+	List<Locacao> buscarLocacoesPorClienteELocadoraEData(Long locadora, Long cliente, String data);
 }

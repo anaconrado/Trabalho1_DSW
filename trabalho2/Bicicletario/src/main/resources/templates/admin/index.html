@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:th="http://www.thymeleaf.org"
@@ -19,8 +20,8 @@
 					th:href="@{/locadoras/listar}" th:text="#{locadora.listar.label}"></a>
 				<a class="btn btn-primary mb-2" type="button" 
 					th:href="@{/locadoras/cadastrar}" th:text="#{locadora.cadastrar.label}"></a>
-				<a class="btn btn-outline-primary mb-2" type="button"
-                    href="javascript:history.back()"><span th:text="#{previous.message}"></span></a>
+				<a class="btn btn-primary mb-2" type="button"
+					th:href="@{/home}"><span th:text="#{previous.message}"></span></a>
 			
 		</div>
         
