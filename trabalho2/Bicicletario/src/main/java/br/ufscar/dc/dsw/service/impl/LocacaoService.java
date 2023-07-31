@@ -21,6 +21,7 @@ public class LocacaoService implements ILocacaoService {
 		dao.save(locacao);
 	}
 
+
 	@Transactional(readOnly = true)
 	public Locacao buscarPorId(Long id) {
 		return dao.findById(id.longValue());

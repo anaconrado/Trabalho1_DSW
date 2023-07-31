@@ -24,7 +24,7 @@ public class Locadora extends Usuario {
     @Column(nullable = true, length = 50)
     private String cidade;
 
-	@OneToMany(mappedBy = "locadora", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "locadora", cascade = CascadeType.ALL)
     private List<Locacao> locacoes;
 
 	public String getCnpj() {

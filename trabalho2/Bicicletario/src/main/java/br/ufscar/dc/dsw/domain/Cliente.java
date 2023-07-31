@@ -32,7 +32,7 @@ public class Cliente extends Usuario {
     @Column(nullable = false, length = 15)
     private String dataNasc;
 
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Locacao> locacoes;
 	
 	public String getCpf() {
