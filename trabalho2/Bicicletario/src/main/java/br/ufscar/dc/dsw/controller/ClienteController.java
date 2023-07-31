@@ -3,6 +3,7 @@ package br.ufscar.dc.dsw.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -22,6 +23,8 @@ public class ClienteController {
 	@Autowired
 	private IClienteService service;
 	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Cliente cliente) {
@@ -41,6 +44,7 @@ public class ClienteController {
 			return "cliente/cadastro";
 		}		
 		
+		cliente.setPassword(encoder.encode(cliente.getPassword()));
 		service.salvar(cliente);
 		attr.addFlashAttribute("sucess", "Cliente inserido com sucesso.");
 		return "redirect:/clientes/listar";
