@@ -15,7 +15,7 @@ public class Cliente extends Usuario {
     
     @NotBlank
 	@UniqueCpf(message = "CPF já cadastrado")
-	@Size(min = 3, max = 18, message = "Número de caracteres inváE1lido")
+	@Size(min = 11, max = 15, message = "Número de caracteres inváE1lido")
     @Column(nullable = false, length = 45 )
     private String cpf;
     
