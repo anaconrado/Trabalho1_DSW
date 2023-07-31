@@ -30,6 +30,7 @@ public class LocacaoService implements ILocacaoService {
         return dao.buscarLocacoesPorClienteELocadoraEData(clienteId.longValue(), locadoraId.longValue(), data);
     }
 
+
 	@Transactional(readOnly = true)
 	public Locacao buscarPorId(Long id) {
 		return dao.findById(id.longValue());

@@ -7,6 +7,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import br.ufscar.dc.dsw.validation.UniqueCnpj;
+import javax.persistence.CascadeType;
+
 
 @SuppressWarnings("serial")
 @Entity
@@ -15,13 +17,15 @@ public class Locadora extends Usuario {
 
 	@NotBlank
     @UniqueCnpj (message = "CNPJ já cadastrado")
-	//trocar o tamanho depois min = 18 tambem
-	@Size(min = 3, max = 18, message = "Número de caracteres inválido")
+	@Size(min = 13, max = 18, message = "Número de caracteres inválido")
 	@Column(nullable = false, unique = true, length = 60)
 	private String cnpj;
 
     @Column(nullable = true, length = 50)
     private String cidade;
+
+	@OneToMany(mappedBy = "locadora", cascade = CascadeType.ALL)
+    private List<Locacao> locacoes;
 
 	public String getCnpj() {
 		return cnpj;
@@ -37,5 +41,13 @@ public class Locadora extends Usuario {
 
     public void setCidade(String cidade){
         this.cidade = cidade;
+    }
+
+	public List<Locacao> getLocacoes() {
+        return locacoes;
+    }
+
+    public void setLocacoes(List<Locacao> locacoes) {
+        this.locacoes = locacoes;
     }
 }

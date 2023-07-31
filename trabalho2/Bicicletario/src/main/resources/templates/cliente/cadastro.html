@@ -92,7 +92,7 @@
 						<label th:text="#{cliente.telefone.label}" for="telefone"></label> 
 						<input type="text" class="form-control" id="telefone" th:field="*{telefone}"
 							th:placeholder="#{cliente.telefone.label}" autofocus="autofocus"
-							th:classappend="${#fields.hasErrors('telefone')} ? is-invalid" pattern="[0-9]*" title="#{cliente.cpf.invalido}" required/>
+							th:classappend="${#fields.hasErrors('telefone')} ? is-invalid" title="#{cliente.cpf.invalido}" required/>
 							
 						<div class="invalid-feedback">
 							<span th:errors="*{telefone}"></span>

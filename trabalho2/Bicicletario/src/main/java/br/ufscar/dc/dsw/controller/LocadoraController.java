@@ -94,6 +94,6 @@ public class LocadoraController {
 	public String excluir(@PathVariable("id") Long id, ModelMap model) {
 		service.excluir(id);
 		model.addAttribute("sucess", "Usuário excluído com sucesso.");
-		return listar("", model);
+		return listar(null, model);
 	}
 }
