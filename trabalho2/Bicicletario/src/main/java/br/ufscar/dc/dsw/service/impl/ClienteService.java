@@ -50,4 +50,9 @@ public class ClienteService implements IClienteService {
 	public List<Cliente> buscarTodos() {
 		return dao.findAll();
 	}    
+
+	@Transactional(readOnly = true)
+	public Cliente buscarPorEmail(String email){
+		return dao.findByEmail(email);
+	}
 }

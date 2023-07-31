@@ -17,8 +17,7 @@ public class Locadora extends Usuario {
 
 	@NotBlank
     @UniqueCnpj (message = "CNPJ já cadastrado")
-	//trocar o tamanho depois min = 18 tambem
-	@Size(min = 3, max = 18, message = "Número de caracteres inválido")
+	@Size(min = 13, max = 18, message = "Número de caracteres inválido")
 	@Column(nullable = false, unique = true, length = 60)
 	private String cnpj;
 

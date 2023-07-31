@@ -18,7 +18,7 @@ public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, St
 	@Override
 	public boolean isValid(String Email, ConstraintValidatorContext context) {
 		if (dao != null) {
-			Usuario usuario = dao.getUserByUsername(Email);
+			Usuario usuario = dao.buscarPorEmail(Email);
 			return usuario == null;
 		} else {
             // Não necessidade de validação

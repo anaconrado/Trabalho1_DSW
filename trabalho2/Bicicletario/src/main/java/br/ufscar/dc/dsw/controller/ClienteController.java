@@ -3,7 +3,6 @@ package br.ufscar.dc.dsw.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -23,8 +22,6 @@ public class ClienteController {
 	@Autowired
 	private IClienteService service;
 	
-	@Autowired
-	private BCryptPasswordEncoder encoder;
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Cliente cliente) {
@@ -42,11 +39,8 @@ public class ClienteController {
 		
 		if (result.hasErrors()) {
 			return "cliente/cadastro";
-		}
-
-		System.out.println("password = " + cliente.getPassword());
+		}		
 		
-		cliente.setPassword(encoder.encode(cliente.getPassword()));
 		service.salvar(cliente);
 		attr.addFlashAttribute("sucess", "Cliente inserido com sucesso.");
 		return "redirect:/clientes/listar";
@@ -60,10 +54,16 @@ public class ClienteController {
 	
 	@PostMapping("/editar")
 	public String editar(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
-
-		
-		System.out.println(cliente.getPassword());
-		
+		if (result.hasErrors()) {
+			
+			Cliente cliente2 = service.buscarPorEmail(cliente.getEmail());
+			if(cliente2 != null){
+				if(cliente.getId() != cliente2.getId()){	
+					return "cliente/cadastro";
+				}
+			}
+			
+		}				
 		service.salvar(cliente);
 		attr.addFlashAttribute("sucess", "Cliente editado com sucesso.");
 		return "redirect:/clientes/listar";
