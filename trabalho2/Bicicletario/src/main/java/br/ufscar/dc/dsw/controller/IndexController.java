@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import br.ufscar.dc.dsw.service.spec.ILocadoraService;
 
@@ -16,8 +17,12 @@ public class IndexController {
 	private ILocadoraService service;
 
 	@GetMapping("")
-	public String listarIndex(ModelMap model) {
-		model.addAttribute("locadoras",service.buscarTodos());
+	public String listar(@RequestParam(value = "cidade", required = false) String cidade, ModelMap model) {
+		if (cidade == null) {
+			model.addAttribute("locadoras", service.buscarTodos());
+		} else {
+			model.addAttribute("locadoras", service.buscarPorCidade(cidade));
+		}
 		return "/index";
 	}
 }

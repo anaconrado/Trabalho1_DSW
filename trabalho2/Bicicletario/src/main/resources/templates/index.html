@@ -15,6 +15,10 @@
             <li><a th:href="@{/home}"><span th:text="#{index.message.3}"></a></li>
         </ul>
         <h2 class="text-left" th:text="#{locadora.lista.label}"></h2>
+        <form method="get" th:action="@{/}" class="form-inline my-2 my-lg-0">
+            <input type="text" name="cidade" class="form-control mr-sm-2" placeholder="Digite a cidade">
+            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Pesquisar</button>
+        </form>
         <section class="layout-content" layout:fragment="corpo">
             <div class="container" id="listagem" >
                 <div class="table-responsive">

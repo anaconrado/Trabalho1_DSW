@@ -38,8 +38,6 @@ public class LocadoraService implements ILocadoraService {
 		return dao.findByEmail(email);
 	}
 
-	}
-
 	@Override
 	public List<Locadora> buscarPorCidade(String cidade) {
     	return dao.findByCidade(cidade);
