@@ -46,23 +46,20 @@ public class LocacaoController {
 
 	
 	@GetMapping("/cadastrar")
-	public String cadastrar(Locacao locacao, Model model, Authentication auth) {
+	public String cadastrar(Locacao locacao, Model model) {
 		List<Locadora> locadoras = locadoraService.buscarTodos();
         model.addAttribute("Locadora", locadoras);
-
-        String email = auth.getName();
-        Cliente clienteLogado = clienteService.buscarPorEmail(email);
-        locacao.setCliente(clienteLogado);
         
 		return "locacao/cadastro";
 	}
 
 	@PostMapping("/salvar")
-	public String salvar(@Valid Locacao locacao, BindingResult result, RedirectAttributes attr) {
-		
-		if (result.hasErrors()) {
-			return "locacao/cadastro";
-		}		
+	public String salvar(@Valid Locacao locacao, BindingResult result, RedirectAttributes attr, Authentication auth) {
+
+        String email = auth.getName();
+        Cliente clienteLogado = clienteService.buscarPorEmail(email);
+        locacao.setCliente(clienteLogado);
+        
 		
 		service.salvar(locacao);
 		attr.addFlashAttribute("sucess", "Locação inserida com sucesso.");
@@ -70,9 +67,13 @@ public class LocacaoController {
 	}
 	
 	@GetMapping("/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
-		model.addAttribute("locacao", service.buscarPorId(id));
-		return "locacao/cadastro";
+	public String preEditar(@PathVariable("id") Long id, ModelMap model, Authentication auth) {
+	    model.addAttribute("locacao", service.buscarPorId(id));
+	    
+	    List<Locadora> locadoras = locadoraService.buscarTodos();
+	    model.addAttribute("Locadora", locadoras);
+	    
+	    return "locacao/cadastro";
 	}
 	
 	@PostMapping("/editar")
