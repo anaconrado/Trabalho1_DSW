@@ -16,6 +16,11 @@
 		
 		<a class="btn btn-primary mb-2" type="button" 
 					th:href="@{/locacoes/listar}" th:text="#{locacao.listar.label}"></a>
+					
+		<sec:authorize access="hasRole('ROLE_CLIENTE')">
+			<a class="btn btn-primary mb-2" type="button" th:href="@{/locacoes/cadastrar}" th:text="#{locacao.cadastrar.label}"></a>
+		</sec:authorize>
+					
 		<a class="btn btn-primary" type="button"
 				href="javascript:history.back()"><span th:text="#{previous.message}"></span>
 		</a>

@@ -20,6 +20,15 @@ public class LocacaoService implements ILocacaoService {
 	public void salvar(Locacao locacao) {
 		dao.save(locacao);
 	}
+	
+	public void excluir(Long id) {
+		dao.deleteById(id);
+	}
+	
+	@Transactional(readOnly = true)
+    public List<Locacao> buscarLocacoesPorClienteELocadoraEData(Long clienteId, Long locadoraId, String data) {
+        return dao.buscarLocacoesPorClienteELocadoraEData(clienteId.longValue(), locadoraId.longValue(), data);
+    }
 
 
 	@Transactional(readOnly = true)
