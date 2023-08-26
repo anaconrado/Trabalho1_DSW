@@ -93,7 +93,7 @@ public class BicicletarioApplication {
 			c5.setGenero("M");
 			c5.setDataNasc("25/06/1985");
 			ClienteDao.save(c5);
-			/*
+			
 			Locadora l1 = new Locadora();
 			l1.setEmail("locadora1@hotmail.com");
 			l1.setNome("Locadora 1");
@@ -150,7 +150,6 @@ public class BicicletarioApplication {
 			lo3.setCliente(c1);
 			lo3.setLocadora(l3);
 			LocacaoDao.save(lo3);
-			*/
 		};
 	}
 }

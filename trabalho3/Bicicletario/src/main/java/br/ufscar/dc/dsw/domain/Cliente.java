@@ -12,7 +12,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.CascadeType;
 
- 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "Cliente")
 public class Cliente extends Usuario {
@@ -33,6 +37,9 @@ public class Cliente extends Usuario {
     private String dataNasc;
 
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class, 
+        property = "id")
     private List<Locacao> locacoes;
 	
 	public String getCpf() {

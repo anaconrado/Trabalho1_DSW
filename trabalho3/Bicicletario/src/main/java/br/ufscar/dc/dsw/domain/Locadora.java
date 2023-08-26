@@ -9,6 +9,11 @@ import javax.validation.constraints.Size;
 import br.ufscar.dc.dsw.validation.UniqueCnpj;
 import javax.persistence.CascadeType;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 @SuppressWarnings("serial")
 @Entity
@@ -25,6 +30,9 @@ public class Locadora extends Usuario {
     private String cidade;
 
 	@OneToMany(mappedBy = "locadora", cascade = CascadeType.ALL)
+    @JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class, 
+        property = "id")
     private List<Locacao> locacoes;
 
 	public String getCnpj() {

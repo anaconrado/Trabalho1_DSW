@@ -16,6 +16,11 @@ public class LocacaoService implements ILocacaoService {
 
 	@Autowired
 	ILocacaoDAO dao;
+
+	@Transactional(readOnly = true)
+	public List<Locacao> buscarTodos() {
+		return dao.findAll();
+	}    
 	
 	public void salvar(Locacao locacao) {
 		dao.save(locacao);

@@ -11,6 +11,8 @@ import br.ufscar.dc.dsw.domain.Locacao;
 @SuppressWarnings("unchecked")
 public interface ILocacaoDAO extends CrudRepository<Locacao, Long>{
 
+	List<Locacao> findAll();
+
 	Locacao findById(long id);
 
 	@Query("SELECT locacao FROM Locacao locacao WHERE locacao.cliente.id = ?1")

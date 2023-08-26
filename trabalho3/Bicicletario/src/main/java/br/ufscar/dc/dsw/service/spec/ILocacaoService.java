@@ -6,6 +6,8 @@ import br.ufscar.dc.dsw.domain.Locacao;
 
 public interface ILocacaoService {
 
+	List<Locacao> buscarTodos();
+
 	Locacao buscarPorId(Long id);
 
 	List<Locacao> buscarTodosPorCliente(Long id);

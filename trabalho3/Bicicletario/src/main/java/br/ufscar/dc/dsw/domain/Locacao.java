@@ -11,6 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+
 @SuppressWarnings("serial")
 @Entity
 @UniqueLocacao
@@ -28,11 +34,17 @@ public class Locacao extends AbstractEntity<Long> {
 	@NotNull
     @ManyToOne
     @JoinColumn(name = "cliente_id")
+	@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class, 
+        property = "id")
     private Cliente cliente;
 
     @NotNull
 	@ManyToOne
 	@JoinColumn(name = "locadora_id")
+	@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class, 
+		property = "id")
 	private Locadora locadora;
 
 	public String getData() {
