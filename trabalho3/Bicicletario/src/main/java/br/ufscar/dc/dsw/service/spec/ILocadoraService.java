@@ -10,6 +10,5 @@ public interface ILocadoraService {
     Locadora buscarPorEmail(String email);
     List<Locadora> buscarPorCidade(String cidade);
     List<String> buscarCidadesDisponiveis();
-    //List<Locadora> buscaPorCidade(String cidade);
 
 }
