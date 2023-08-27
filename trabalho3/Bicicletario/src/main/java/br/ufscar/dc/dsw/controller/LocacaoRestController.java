@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.ufscar.dc.dsw.domain.Locacao;
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.Locadora;
+import br.ufscar.dc.dsw.dto.LocacaoDTO;
 import br.ufscar.dc.dsw.service.spec.ILocacaoService;
 
 @RestController
@@ -20,8 +21,8 @@ public class LocacaoRestController {
 	private ILocacaoService service;
 
     @GetMapping(path = "/locacoes")
-	public ResponseEntity<List<Locacao>> lista() {
-		List<Locacao> lista = service.buscarTodos();
+	public ResponseEntity<List<LocacaoDTO>> lista() {
+		List<LocacaoDTO> lista = service.buscarTodosDTO();
 		if (lista.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
@@ -29,8 +30,8 @@ public class LocacaoRestController {
 	}
 	
     @GetMapping(path = "/locacoes/{id}")
-	public ResponseEntity<Locacao> listaPorId(@PathVariable("id") long id) {
-		Locacao locacao = service.buscarPorId(id);
+	public ResponseEntity<LocacaoDTO> listaPorId(@PathVariable("id") long id) {
+    	LocacaoDTO locacao = service.buscarPorIdDTO(id);
 		if (locacao == null) {
 			return ResponseEntity.notFound().build();
 		}
@@ -38,8 +39,8 @@ public class LocacaoRestController {
 	}
 
 	@GetMapping(path = "/locacoes/clientes/{id}")
-	public ResponseEntity<List<Locacao>> listaPorCliente(@PathVariable("id") long id) {
-		List<Locacao> listaClientes = service.buscarTodosPorCliente(id);
+	public ResponseEntity<List<LocacaoDTO>> listaPorCliente(@PathVariable("id") long id) {
+		List<LocacaoDTO> listaClientes = service.buscarTodosPorClienteDTO(id);
 		if (listaClientes.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
@@ -47,8 +48,8 @@ public class LocacaoRestController {
 	}
 
     @GetMapping(path = "/locacoes/locadoras/{id}")
-	public ResponseEntity<List<Locacao>> listaPorLocadora(@PathVariable("id") long id) {
-		List<Locacao> listaLocadoras = service.buscarTodosPorLocadora(id);
+	public ResponseEntity<List<LocacaoDTO>> listaPorLocadora(@PathVariable("id") long id) {
+		List<LocacaoDTO> listaLocadoras = service.buscarTodosPorLocadoraDTO(id);
 		if (listaLocadoras.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}

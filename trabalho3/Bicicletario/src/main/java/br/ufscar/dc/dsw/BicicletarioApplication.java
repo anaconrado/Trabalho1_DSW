@@ -114,7 +114,7 @@ public class BicicletarioApplication {
 
 			Locadora l3 = new Locadora();
 			l3.setEmail("locadora3@outlook.com");
-			l3.setNome("Locadora 3");
+			l3.setNome("Locadora tt");
 			l3.setPassword(encoder.encode("locadora3"));
 			l3.setRole("ROLE_LOCADORA");
 			l3.setCnpj("75.432.109/0001-67");
