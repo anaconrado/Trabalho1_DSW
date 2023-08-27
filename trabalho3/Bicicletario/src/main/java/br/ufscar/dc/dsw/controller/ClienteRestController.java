@@ -22,9 +22,6 @@ import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.Locacao;
 import br.ufscar.dc.dsw.service.spec.IClienteService;
 
-/*
- * arrumar: verificação do cpf quando faz PUT
- */
 @RestController
 public class ClienteRestController {
 
@@ -94,7 +91,7 @@ public class ClienteRestController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).body(null);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		}
 	}
     
@@ -114,7 +111,7 @@ public class ClienteRestController {
 				return ResponseEntity.badRequest().body(null);
 			}
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).body(null);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		}
 	}
     
