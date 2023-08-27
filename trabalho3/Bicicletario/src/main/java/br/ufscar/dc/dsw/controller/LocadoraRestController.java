@@ -22,6 +22,8 @@ import br.ufscar.dc.dsw.domain.Locacao;
 import br.ufscar.dc.dsw.domain.Locadora;
 import br.ufscar.dc.dsw.service.spec.ILocadoraService;
 
+//33074212
+
 public class LocadoraRestController {
     @Autowired
 	private ILocadoraService service;
@@ -49,7 +51,8 @@ public class LocadoraRestController {
 		loc.setNome((String) json.get("nome"));
 		loc.setPassword((String) json.get("password"));
         loc.setRole((String) json.get("role"));
-        loc.setCnpj((String) json.get("cpf"));
+
+        loc.setCnpj((String) json.get("cnpj"));
         loc.setCidade((String) json.get("cidade"));
         loc.setLocacoes((List<Locacao>) json.get("locacoes"));		
 		
@@ -99,7 +102,7 @@ public class LocadoraRestController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).body(null);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null); 
 		}
 	}
     
@@ -121,7 +124,7 @@ public class LocadoraRestController {
 				return ResponseEntity.badRequest().body(null);
 			}
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).body(null);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null); 
 		}
 	}
     
