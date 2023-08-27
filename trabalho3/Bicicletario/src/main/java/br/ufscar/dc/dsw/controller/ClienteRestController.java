@@ -22,9 +22,6 @@ import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.Locacao;
 import br.ufscar.dc.dsw.service.spec.IClienteService;
 
-/*
- * arrumar: verificação do cpf quando faz PUT
- */
 @RestController
 public class ClienteRestController {
 
