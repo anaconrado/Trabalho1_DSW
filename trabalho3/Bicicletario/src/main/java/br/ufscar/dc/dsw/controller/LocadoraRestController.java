@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -24,7 +25,9 @@ import br.ufscar.dc.dsw.service.spec.ILocadoraService;
 
 //33074212
 
+@RestController
 public class LocadoraRestController {
+	
     @Autowired
 	private ILocadoraService service;
 
@@ -59,37 +62,40 @@ public class LocadoraRestController {
 	}
 
     //Está listando todas as locadoras
-	@GetMapping(path = "/locadoras")
+	@GetMapping(path = "/locadora")
 	public ResponseEntity<List<Locadora>> lista() {
 		List<Locadora> lista = service.buscarTodos();
 		if (lista.isEmpty()) {
+			System.out.println("Locadora não encontrada para o ID: ");
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(lista);
 	}
 
-    @GetMapping(path = "/locadoras/cidades/{nome}")
+    @GetMapping(path = "/locadora/cidades/{nome}")
 	public ResponseEntity<List<Locadora>> listaLocCidades(@PathVariable("nome") String nome) {
 		List<Locadora> lista = service.buscarPorCidade(nome);
 		if (lista.isEmpty()) {
+			System.out.println("\n\n Locadora não encontrada para o ID: \n\n");
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(lista);
 	}
 	
     //Retorna uma locadora por ID
-	@GetMapping(path = "/locadoras/{id}")
+	@GetMapping(path = "/locadora/{id}")
 	public ResponseEntity<Locadora> lista(@PathVariable("id") long id) {
 	    Locadora loc = service.buscarPorId(id);
 		if (loc == null) {
+			System.out.println("\n\n Locadora não encontrada para o ID: \n\n");
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(loc);
 	}
     
     //Cadastra uma nova locadora
-	@PostMapping(path = "/locadoras")
-	@ResponseBody
+	@PostMapping(path = "/locadora")
+	//@ResponseBody
 	public ResponseEntity<Locadora> cria(@RequestBody JSONObject json) {
 		try {
 			if (isJSONValid(json.toString())) {
@@ -102,18 +108,20 @@ public class LocadoraRestController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("\n\n Locadora não encontrada para o ID: \n\n");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null); 
 		}
 	}
     
 
     //Atualiza locadora por ID
-	@PutMapping(path = "/locadoras/{id}")
+	@PutMapping(path = "/locadora/{id}")
 	public ResponseEntity<Locadora> atualiza(@PathVariable("id") long id, @RequestBody JSONObject json) {
 		try {
 			if (isJSONValid(json.toString())) {
 			    Locadora loc = service.buscarPorId(id);
 				if (loc == null) {
+					System.out.println(" \n\n Locadora não encontrada: \n\n");
 					return ResponseEntity.notFound().build();
 				} else {
 					parse(loc, json);
@@ -129,11 +137,12 @@ public class LocadoraRestController {
 	}
     
     //Remove uma Locadora por ID
-	@DeleteMapping(path = "/locadoras/{id}")
+	@DeleteMapping(path = "/locadora/{id}")
 	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
 
 		Locadora loc = service.buscarPorId(id);
 		if (loc == null) {
+			System.out.println("\n\nLocadora não encontrada \n\n");
 			return ResponseEntity.notFound().build();
 		} else {
 			service.excluir(id);
