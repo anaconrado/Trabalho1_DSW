@@ -47,7 +47,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/clientes", "/locadoras", "/locacoes").permitAll()
 				.antMatchers("/clientes/{\\d+}", "/locadoras/{\\d+}").permitAll()
 				.antMatchers("/locacoes/{\\d+}").permitAll()
-				.antMatchers("/locadoras/{\\d+}").permitAll()
 				.antMatchers("/locadoras/cidades/{\\w+}").permitAll()
 				.antMatchers("/locacoes/clientes/{\\d+}").permitAll()
 				.antMatchers("/locacoes/locadoras/{\\d+}").permitAll()

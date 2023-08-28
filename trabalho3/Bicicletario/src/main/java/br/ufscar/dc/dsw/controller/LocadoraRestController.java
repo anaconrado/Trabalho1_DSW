@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -64,7 +63,6 @@ public class LocadoraRestController {
 	public ResponseEntity<List<Locadora>> lista() {
 		List<Locadora> lista = service.buscarTodos();
 		if (lista.isEmpty()) {
-			System.out.println("Locadora não encontrada para o ID: ");
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(lista);
@@ -74,7 +72,6 @@ public class LocadoraRestController {
 	public ResponseEntity<List<Locadora>> listaLocCidades(@PathVariable("nome") String nome) {
 		List<Locadora> lista = service.buscarPorCidade(nome);
 		if (lista.isEmpty()) {
-			System.out.println("\n\n Locadora não encontrada para o ID: \n\n");
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(lista);
@@ -85,7 +82,6 @@ public class LocadoraRestController {
 	public ResponseEntity<Locadora> lista(@PathVariable("id") long id) {
 	    Locadora loc = service.buscarPorId(id);
 		if (loc == null) {
-			System.out.println("\n\n Locadora não encontrada para o ID: \n\n");
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(loc);
@@ -106,7 +102,6 @@ public class LocadoraRestController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("\n\n Locadora não encontrada para o ID: \n\n");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null); 
 		}
 	}
@@ -119,7 +114,6 @@ public class LocadoraRestController {
 			if (isJSONValid(json.toString())) {
 			    Locadora loc = service.buscarPorId(id);
 				if (loc == null) {
-					System.out.println(" \n\n Locadora não encontrada: \n\n");
 					return ResponseEntity.notFound().build();
 				} else {
 					parse(loc, json);
@@ -140,7 +134,6 @@ public class LocadoraRestController {
 
 		Locadora loc = service.buscarPorId(id);
 		if (loc == null) {
-			System.out.println("\n\nLocadora não encontrada \n\n");
 			return ResponseEntity.notFound().build();
 		} else {
 			service.excluir(id);
