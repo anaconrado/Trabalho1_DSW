@@ -27,7 +27,7 @@ import br.ufscar.dc.dsw.service.spec.ILocadoraService;
 
 @RestController
 public class LocadoraRestController {
-	
+
     @Autowired
 	private ILocadoraService service;
 
@@ -54,15 +54,13 @@ public class LocadoraRestController {
 		loc.setNome((String) json.get("nome"));
 		loc.setPassword((String) json.get("password"));
         loc.setRole((String) json.get("role"));
-
         loc.setCnpj((String) json.get("cnpj"));
         loc.setCidade((String) json.get("cidade"));
         loc.setLocacoes((List<Locacao>) json.get("locacoes"));		
-		
 	}
 
     //Está listando todas as locadoras
-	@GetMapping(path = "/locadora")
+	@GetMapping(path = "/locadoras")
 	public ResponseEntity<List<Locadora>> lista() {
 		List<Locadora> lista = service.buscarTodos();
 		if (lista.isEmpty()) {
@@ -72,7 +70,7 @@ public class LocadoraRestController {
 		return ResponseEntity.ok(lista);
 	}
 
-    @GetMapping(path = "/locadora/cidades/{nome}")
+    @GetMapping(path = "/locadoras/cidades/{nome}")
 	public ResponseEntity<List<Locadora>> listaLocCidades(@PathVariable("nome") String nome) {
 		List<Locadora> lista = service.buscarPorCidade(nome);
 		if (lista.isEmpty()) {
@@ -83,7 +81,7 @@ public class LocadoraRestController {
 	}
 	
     //Retorna uma locadora por ID
-	@GetMapping(path = "/locadora/{id}")
+	@GetMapping(path = "/locadoras/{id}")
 	public ResponseEntity<Locadora> lista(@PathVariable("id") long id) {
 	    Locadora loc = service.buscarPorId(id);
 		if (loc == null) {
@@ -94,7 +92,7 @@ public class LocadoraRestController {
 	}
     
     //Cadastra uma nova locadora
-	@PostMapping(path = "/locadora")
+	@PostMapping(path = "/locadoras")
 	//@ResponseBody
 	public ResponseEntity<Locadora> cria(@RequestBody JSONObject json) {
 		try {
@@ -115,7 +113,7 @@ public class LocadoraRestController {
     
 
     //Atualiza locadora por ID
-	@PutMapping(path = "/locadora/{id}")
+	@PutMapping(path = "/locadoras/{id}")
 	public ResponseEntity<Locadora> atualiza(@PathVariable("id") long id, @RequestBody JSONObject json) {
 		try {
 			if (isJSONValid(json.toString())) {
@@ -137,7 +135,7 @@ public class LocadoraRestController {
 	}
     
     //Remove uma Locadora por ID
-	@DeleteMapping(path = "/locadora/{id}")
+	@DeleteMapping(path = "/locadoras/{id}")
 	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
 
 		Locadora loc = service.buscarPorId(id);
