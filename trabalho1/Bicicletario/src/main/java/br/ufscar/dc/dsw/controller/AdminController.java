@@ -155,26 +155,10 @@ public class AdminController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-/*
-    private void insere(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        
-        String codigo	= request.getParameter("codigo");
-        String email 	= request.getParameter("email");
-        String senha 	= request.getParameter("senha");
-        String papel 	= request.getParameter("papel");
-        String nome 	= request.getParameter("nome");
-        
-        Usuario usuario = new Usuario(codigo, email, senha, papel, nome);
-        daoUsuario.insert(usuario);
-        response.sendRedirect("lista");
-    }
-    */
     private void insereCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        
+        Erro erro = new Erro();
         String cpf  		= request.getParameter("cpf");
         String email 		= request.getParameter("email");
         String senha 		= request.getParameter("senha");
@@ -186,9 +170,25 @@ public class AdminController extends HttpServlet {
         //String cpf, String telefone, String sexo, String nascimento, String email, String senha, String papel, String nome)
         Cliente cliente = new Cliente(cpf, telefone, sexo, nascimento, email, senha, papel, nome);
         
-        daoUsuario.insert((Usuario)cliente);
-        daoCliente.insert(cliente);
-        response.sendRedirect("lista");
+        if(daoUsuario.getbyEmail(cliente.getEmail()) != null){
+            erro.add("O Email inserido já está em uso");
+            request.setAttribute("mensagens", erro);
+            RequestDispatcher rd = request.getRequestDispatcher("cadastroCliente");
+            rd.forward(request, response);
+        }
+
+        if(daoCliente.getbyCpf(cliente.getCpf()) != null){
+            erro.add("O CPF inserido já está em uso");
+            request.setAttribute("mensagens", erro);
+            RequestDispatcher rd = request.getRequestDispatcher("cadastroCliente");
+            rd.forward(request, response);
+
+        }else{
+            daoUsuario.insert((Usuario)cliente);
+            daoCliente.insert(cliente);
+            response.sendRedirect("lista");
+        }
+        
     }
 
     private void insereLocadora(HttpServletRequest request, HttpServletResponse response)
@@ -204,10 +204,27 @@ public class AdminController extends HttpServlet {
        
         //String cnpj, String cidade, String email, String senha, String papel, String nome
         Locadora locadora = new Locadora(cnpj, cidade, email, senha, papel, nome);
+        Erro erro = new Erro();
+
         
-        daoUsuario.insert((Usuario)locadora);
-        daoLocadora.insert(locadora);
-        response.sendRedirect("lista");
+        if(daoUsuario.getbyEmail(locadora.getEmail()) != null){
+            erro.add("O Email inserido já está em uso");
+            request.setAttribute("mensagens", erro);
+            RequestDispatcher rd = request.getRequestDispatcher("cadastroLocadora");
+            rd.forward(request, response);
+        }
+
+        if(daoLocadora.getbyCnpj(locadora.getCnpj()) != null){
+            erro.add("O CNPJ inserido já está em uso");
+            request.setAttribute("mensagens", erro);
+            RequestDispatcher rd = request.getRequestDispatcher("cadastroLocadora");
+            rd.forward(request, response);
+
+        }else{
+            daoUsuario.insert((Usuario)locadora);
+            daoLocadora.insert(locadora);
+            response.sendRedirect("lista");
+        }
     }
 
     private void atualizeCliente(HttpServletRequest request, HttpServletResponse response)
@@ -224,9 +241,20 @@ public class AdminController extends HttpServlet {
         //String cpf, String telefone, String sexo, String nascimento, String email, String senha, String papel, String nome)
         Cliente cliente = new Cliente(cpf, telefone, sexo, nascimento, email, senha, papel, nome);
         
-        daoUsuario.update((Usuario)cliente);
-        daoCliente.update(cliente);
-        response.sendRedirect("lista");
+        Usuario cliente2 = daoUsuario.getbyEmail(cliente.getEmail());
+        Erro erro = new Erro();
+
+        if(cliente2 == null || cliente.getCodigo().equals(cliente2.getCodigo())){
+            daoUsuario.update((Usuario)cliente);
+            daoCliente.update(cliente);
+            response.sendRedirect("lista");
+        }else{
+            erro.add("O Email inserido já está em uso");
+            request.setAttribute("mensagens", erro);
+            RequestDispatcher rd = request.getRequestDispatcher("formularioCliente");
+            rd.forward(request, response);
+        }
+        
     }
 
     private void atualizeLocadora(HttpServletRequest request, HttpServletResponse response)
@@ -243,10 +271,21 @@ public class AdminController extends HttpServlet {
        
         //String cnpj, String cidade, String email, String senha, String papel, String nome
         Locadora locadora = new Locadora(cnpj, cidade, email, senha, papel, nome);
+        Usuario locadora2 = daoUsuario.getbyEmail(locadora.getEmail());
+        Erro erro = new Erro();
+
+        if(locadora2 == null || locadora.getCodigo().equals(locadora2.getCodigo())){
+            daoUsuario.update((Usuario)locadora);
+            daoLocadora.update(locadora);
+            response.sendRedirect("lista");
+        }else{
+            erro.add("O Email inserido já está em uso");
+            request.setAttribute("mensagens", erro);
+            RequestDispatcher rd = request.getRequestDispatcher("formularioLocadora");
+            rd.forward(request, response);
+        }
         
-        daoUsuario.update((Usuario)locadora);
-        daoLocadora.update(locadora);
-        response.sendRedirect("lista");
+        
     }
 
 

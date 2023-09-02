@@ -3,8 +3,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html> 
+<html>
 <fmt:bundle basename="message">
+<head>
+	<link href="${pageContext.request.contextPath}/layout.css" rel="stylesheet" type="text/css"/>
+</head>
 <table border="1">
+	<c:if test="${mensagens.existeErros}">
+            <div id="erro">
+                <ul>
+                    <c:forEach var="erro" items="${mensagens.erros}">
+                        <li> ${erro} </li>
+                    </c:forEach>
+                </ul>
+            </div>
+	</c:if>
 	<caption>
 		<c:choose>
 			<c:when test="${locadora != null}">
@@ -56,3 +70,4 @@
 	</tr>
 </table>
 </fmt:bundle>
+</html>
