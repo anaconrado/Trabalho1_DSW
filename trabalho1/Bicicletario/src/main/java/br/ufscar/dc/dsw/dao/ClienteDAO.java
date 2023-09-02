@@ -10,6 +10,11 @@ import java.util.List;
 
 
 import br.ufscar.dc.dsw.domain.Cliente;
+import br.ufscar.dc.dsw.util.Erro;
+import br.ufscar.dc.dsw.dao.ClienteDAO;
+import javax.servlet.RequestDispatcher;
+
+
 
 public class ClienteDAO extends GenericDAO {
     public void insert(Cliente cliente) {
@@ -31,7 +36,11 @@ public class ClienteDAO extends GenericDAO {
             statement.close();
             conn.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            ClienteDAO dao = new ClienteDAO();
+             if(dao.getbyCpf(cliente.getCpf()) != null){
+            Erro erro = new Erro();
+            erro.add("O CPF inserido já está em uso");
+        }
         }
     }
 

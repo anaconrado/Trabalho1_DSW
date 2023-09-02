@@ -2,17 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<html>
+<fmt:bundle basename="message">
 <head>
-<title>Sistema de locação</title>
+<title><fmt:message key="page.title.admin" /></title>
 </head>
 
 <body>
 	<div align="center">
-		<h1>Gerenciamento de usuários</h1>
 		<h2>
-			<a href="lista">Lista de clientes</a>
+			<a href="lista"><fmt:message key="cliente.list" /></a>
 		</h2>
 	</div>
 	<div align="center">
@@ -29,13 +30,6 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	<c:if test="${!empty requestScope.mensagens}">
-		<ul class="erro">
-			<c:forEach items="${requestScope.mensagens}" var="mensagem">
-				<li>${mensagem}</li>
-			</c:forEach>
-		</ul>
-	</c:if>
 </body>
-
+</fmt:bundle>
 </html>
