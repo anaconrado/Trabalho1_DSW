@@ -2,24 +2,26 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
+<fmt:bundle basename="message">
 <head>
-<title>Gerenciamento de locação</title>
-	</head>
+	<title><fmt:message key="locacao.management" /></title>
+</head>
 
 	<body>
 
 		<div align="center">
 			<h1>
-				Bem vindo
+				<fmt:message key="locacao.welcome" />
 			</h1>
 			<h2>
 				<a href="${pageContext.request.contextPath}/logout.jsp"> 
-					logout
+					<fmt:message key="locacao.logout" />
 				</a>
 			</h2>
 			<br />
-			<h3> Lista de locações </h3>
+			<h3> <fmt:message key="locacao.lista" /> </h3>
 			<br />
 		</div>
 
@@ -27,13 +29,12 @@
 			<table border="1">
 				<caption></caption>
 				<tr>
-					<th>ID</th>
-					<th>Status</th>
-					<th>Data</th>
-					<th>Valor</th>
-					<th>CNPJ da locadora </th>
-					<th>CPF do cliente</th>
-					<th>ID da bicicleta</th>
+					<th><fmt:message key="locacao.ID" /></th>
+					<th><fmt:message key="locacao.status" /></th>
+					<th><fmt:message key="locacao.data" /></th>
+					<th><fmt:message key="locacao.valor" /></th>
+					<th><fmt:message key="locacao.locadora.ID" /> </th>
+					<th><fmt:message key="locacao.cliente.ID" /></th>
 				</tr>
 				<c:forEach var="locacao" items="${requestScope.listaLocacoes}">
 					<tr>
@@ -43,11 +44,10 @@
 						<td>${locacao.val}</td>
 						<td>${locacao.locadora.cnpj}</td>
 						<td>${locacao.cliente.cpf}</td>
-						<td>${locacao.bicicleta.id}</td>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
 	</body>
-
+</fmt:bundle>
 </html>
