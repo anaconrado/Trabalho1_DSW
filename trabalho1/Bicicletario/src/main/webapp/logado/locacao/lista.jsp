@@ -27,13 +27,12 @@
 			<table border="1">
 				<caption></caption>
 				<tr>
-					<th>ID</th>
+					<th>ID da locação</th>
 					<th>Status</th>
 					<th>Data</th>
 					<th>Valor</th>
-					<th>CNPJ da locadora </th>
-					<th>CPF do cliente</th>
-					<th>ID da bicicleta</th>
+					<th>ID da locadora </th>
+					<th>ID do cliente</th>
 				</tr>
 				<c:forEach var="locacao" items="${requestScope.listaLocacoes}">
 					<tr>
@@ -43,7 +42,6 @@
 						<td>${locacao.val}</td>
 						<td>${locacao.locadora.cnpj}</td>
 						<td>${locacao.cliente.cpf}</td>
-						<td>${locacao.bicicleta.id}</td>
 					</tr>
 				</c:forEach>
 			</table>

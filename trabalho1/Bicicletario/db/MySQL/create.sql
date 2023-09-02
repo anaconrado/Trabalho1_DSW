@@ -65,7 +65,6 @@ insert into Usuario(codigo, nome, email, senha, papel) values ('12345','admin', 
 insert into Usuario values ('6789', 'usuario','user@hotmail.com', '123', 'CLIENTE');
 insert into Cliente values ('6789', 'nao tem', 'feminino', '21/03/2000');
 
-
 insert into Usuario values ('6782','usuario', 'user2@hotmail.com', '1234', 'CLIENTE');
 insert into Cliente values ('6782', 'nao tem', 'feminino', '21/03/2000');
 
@@ -76,4 +75,7 @@ insert into Usuario values ('6781','usuario','user1@hotmail.com', '1234',  'LOCA
 insert into Locadora values ('6781','são carlos');
 
 insert into Bicicleta(id, modelo, ano, descricao, valor) values ('0000', 'modelo', '2013', 'bike', '2000');
-insert into Locacao values ('1111', 'em uso', '21/03/2000', '21.88', '0000', '6789', '0000');
+insert into Locacao values ('1111', 'uso finalizado', '21/03/2000', '21.88', '0000', '6789', '0000');
+
+insert into Bicicleta(id, modelo, ano, descricao, valor) values ('1111', 'model', '2012', 'bicicleta rosa', '1030');
+insert into Locacao values ('2222', 'em uso', '18/07/2003', '42.47', '6781', '6789', '0000');
