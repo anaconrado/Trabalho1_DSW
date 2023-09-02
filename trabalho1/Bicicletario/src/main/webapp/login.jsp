@@ -1,8 +1,11 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
+<fmt:bundle basename="message">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Autenticação de Usuário</title>
@@ -37,7 +40,7 @@
 </head>
 <body>
     <div>
-        <h1>Autenticação de Usuário</h1>
+        <h1><fmt:message key="page.autenticacao" /></h1>
         <c:if test="${mensagens.existeErros}">
             <div id="erro">
                 <ul>
@@ -54,7 +57,7 @@
                     <td><input type="text" name="email" value="${param.email}"/></td>
                 </tr>
                 <tr>
-                    <th>Senha: </th>
+                    <th><fmt:message key="page.senha" /></th>
                     <td><input type="password" name="senha" /></td>
                 </tr>
                 <tr>
@@ -66,4 +69,5 @@
         </form>
     </div>
 </body>
+</fmt:bundle>
 </html>
