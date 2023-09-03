@@ -45,8 +45,7 @@ create table Bicicleta
 
 create table Locacao
 ( 
-    id      varchar(20) not null, 
-    status  varchar(20) not null,
+    id      varchar(20) not null,
     data    varchar(20) not null, 
     val     varchar(20) not null, 
     cnpj    varchar(18)  not null,

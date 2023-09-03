@@ -2,48 +2,35 @@ package br.ufscar.dc.dsw.domain;
 
 public class Locacao {
 
-	private Long id;
-	private String status;
+	private static Long ids = (long)0;
+	private String id;
 	private String data;
-	private Float val;
+	private String val;
 	private Locadora locadora;
 	private Cliente cliente;
 	private Bicicleta bicicleta;
 
-	public Locacao(Long id, String status, String data, Float val, Locadora locadora, Cliente cliente, Bicicleta bicicleta) {
-		this.id = id;
-		this.status = status;
+	public Locacao(String data, String val, Locadora locadora, Cliente cliente, Bicicleta bicicleta) {
+		ids++;
+		this.id = String.valueOf(ids);
 		this.data = data;
 		this.val = val;
 		this.locadora = locadora;
 		this.cliente = cliente;
 		this.bicicleta = bicicleta;
-	}
-
-	public Locacao(String status, String data, Float val, String cnpj, String cpf, Bicicleta bicicleta) {
-		super();
-		this.status = status;
-		this.data = data;
-		this.val = val;
-		this.locadora = locadora;
-		this.cliente = cliente;
-		this.bicicleta = bicicleta;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getStatus() {
-		return status;
 	}
 	
-	public void setStatus(String status) {
-		this.status = status;
+	public Locacao(String id, String data, String val, Locadora locadora, Cliente cliente, Bicicleta bicicleta) {
+		this.id = id;
+		this.data = data;
+		this.val = val;
+		this.locadora = locadora;
+		this.cliente = cliente;
+		this.bicicleta = bicicleta;
+	}
+
+	public String getId() {
+		return id;
 	}
 	
 	public String getData() {
@@ -54,11 +41,11 @@ public class Locacao {
 		this.data = data;
 	}
 
-	public Float getVal() {
+	public String getVal() {
 		return val;
 	}
 
-	public void setVal(Float val) {
+	public void setVal(String val) {
 		this.val = val;
 	}
 

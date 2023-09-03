@@ -21,6 +21,8 @@ import br.ufscar.dc.dsw.domain.Locadora;
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.dao.LocacaoDAO;
 import br.ufscar.dc.dsw.dao.LocadoraDAO;
+import br.ufscar.dc.dsw.dao.UsuarioDAO;
+import br.ufscar.dc.dsw.dao.BicicletaDAO;
 import br.ufscar.dc.dsw.dao.ClienteDAO;
 import br.ufscar.dc.dsw.util.Erro;
 
@@ -31,6 +33,9 @@ public class LocacaoController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private LocacaoDAO dao;
+    private UsuarioDAO daoUsuario;
+    private ClienteDAO daoCliente;
+    private LocadoraDAO daoLocadora;
 
     @Override
     public void init() {
@@ -66,16 +71,21 @@ public class LocacaoController extends HttpServlet {
         }
         try {
         	lista(request, response);
-            /*switch (action) {
+            switch (action) {
             	
-                case "/cadastro":
-                    apresentaFormCadastro(request, response);
+	            case "/cadastroLocacao":
+	            	cadastroLocacao(request, response);
+	            	break;
+                case "/insercaoLocacao":
+                    insereLocacao(request, response);
+                    break;
+                case "/atualizacaoLocacao":
+                    atualizeLocacao(request, response);
                     break;
                 default:
                     lista(request, response);
                     break;
             }
-            */
         } catch (RuntimeException | IOException | ServletException e) {
             throw new ServletException(e);
         }
@@ -86,7 +96,7 @@ public class LocacaoController extends HttpServlet {
     	Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
         List<Locacao> listaLocacoes;
         if (usuario.getPapel().equals("LOCADORA")) 
-            listaLocacoes = dao.getAllLocadora(usuario);
+            listaLocacoes = dao.getAllLocacoes(usuario);
         else 
             listaLocacoes = dao.getAllCliente(usuario);
         request.setAttribute("listaLocacoes", listaLocacoes);
@@ -94,14 +104,72 @@ public class LocacaoController extends HttpServlet {
         dispatcher.forward(request, response);
     }
     
-    /*
-
-    private void apresentaFormCadastro(HttpServletRequest request, HttpServletResponse response)
+    // Formulario de cadastro de locacao (R5)
+    private void cadastroLocacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("livros", getLivros());
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/compra/formulario.jsp");
+        String id = request.getParameter("id");
+        Locacao locacao = dao.getbyId(id);
+        request.setAttribute("locacao", locacao);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/locacao/formularioLocacao.jsp");
         dispatcher.forward(request, response);
     }
-    */
+
+    // Insere a locacao e verifica se a locadora ou o cliente ja tem outra locacao naquele horario (R7)
+    private void insereLocacao(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        Erro erro = new Erro();
+        String data 		= request.getParameter("data");
+        String val	 		= request.getParameter("val");
+        String cnpj			= request.getParameter("locadora");
+        String cpf		 	= request.getParameter("cliente");
+        String bike_id		= request.getParameter("bike_id");
+        Cliente cliente = new ClienteDAO().getbyCpf(cpf);
+        Bicicleta bicicleta = new BicicletaDAO().get(Long.parseLong(bike_id));  
+        Locadora locadora = new LocadoraDAO().getbyCnpj(cnpj);  
+
+        Locacao locacao = new Locacao(data, val, locadora, cliente, bicicleta);
+        
+        if(dao.verifyLocacao(locacao)){
+            erro.add("Horário já usado por Locadora/Cliente");
+            request.setAttribute("mensagens", erro);
+            RequestDispatcher rd = request.getRequestDispatcher("cadastroLocacao");
+            rd.forward(request, response);
+
+        }else{
+            dao.insert(locacao);
+            response.sendRedirect("lista");
+        }
+        
+    }
+    
+
+    private void atualizeLocacao(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        Erro erro = new Erro();
+        String data 		= request.getParameter("data");
+        String val	 		= request.getParameter("val");
+        String cnpj			= request.getParameter("locadora");
+        String cpf		 	= request.getParameter("cliente");
+        String bike_id		= request.getParameter("bike_id");
+        Cliente cliente = new ClienteDAO().getbyCpf(cpf);
+        Bicicleta bicicleta = new BicicletaDAO().get(Long.parseLong(bike_id));  
+        Locadora locadora = new LocadoraDAO().getbyCnpj(cnpj);  
+
+        Locacao locacao = new Locacao(data, val, locadora, cliente, bicicleta);
+        
+        if(dao.verifyLocacao(locacao)){
+            erro.add("Horário já usado por Locadora/Cliente");
+            request.setAttribute("mensagens", erro);
+            RequestDispatcher rd = request.getRequestDispatcher("cadastroLocacao");
+            rd.forward(request, response);
+
+        }else{
+            dao.update(locacao);
+            response.sendRedirect("lista");
+        }
+        
+    }
 
 }
