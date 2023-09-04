@@ -33,9 +33,6 @@ public class LocacaoController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private LocacaoDAO dao;
-    private UsuarioDAO daoUsuario;
-    private ClienteDAO daoCliente;
-    private LocadoraDAO daoLocadora;
 
     @Override
     public void init() {
@@ -97,8 +94,10 @@ public class LocacaoController extends HttpServlet {
     private void listaLocacoes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
         List<Locacao> listaLocacoes;
-    	System.out.println("lista locacoes check" + usuario.getPapel());
-    	
+        
+        if (usuario == null)
+    		response.sendRedirect(request.getContextPath());
+        
         if (usuario.getPapel().equals("LOCADORA")) 
             listaLocacoes = dao.getAllLocacoes(usuario);
         else

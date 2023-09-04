@@ -30,11 +30,11 @@ public class Locacao {
 	}
 
 	public String getId() {
-		return id;
+		return this.id;
 	}
 	
 	public String getData() {
-		return data;
+		return this.data;
 	}
 
 	public void setData(String data) {
@@ -42,7 +42,7 @@ public class Locacao {
 	}
 
 	public String getVal() {
-		return val;
+		return this.val;
 	}
 
 	public void setVal(String val) {
@@ -50,7 +50,7 @@ public class Locacao {
 	}
 
 	public Locadora getLocadora() {
-		return locadora;
+		return this.locadora;
 	}
 	
 	public void setLocadora(Locadora locadora) {
@@ -58,7 +58,7 @@ public class Locacao {
 	}
 	
 	public Cliente getCliente() {
-		return cliente;
+		return this.cliente;
 	}
 	
 	public void setCliente(Cliente cliente) {
@@ -66,7 +66,7 @@ public class Locacao {
 	}
 	
 	public Bicicleta getBicicleta() {
-		return bicicleta;
+		return this.bicicleta;
 	}
 
 	public void setBicicleta(Bicicleta bicicleta) {

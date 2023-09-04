@@ -88,8 +88,13 @@ insert into Usuario values ('23.456.789/0001-45', 'Locadora 4', 'locadora4@hotma
 insert into Locadora values ('23.456.789/0001-45', 'Araraquara');
 
 -- Locaçoes
-insert into Bicicleta(id, modelo, ano, descricao, valor) values ('0000', 'modelo', '2013', 'bike', '2000');
-insert into Locacao values ('1111', 'uso finalizado', '21/03/2000', '21.88', '12.345.678/0001-90', '468.325.873-40', '0000');
-
 insert into Bicicleta(id, modelo, ano, descricao, valor) values ('1111', 'model', '2012', 'bicicleta rosa', '1030');
-insert into Locacao values ('2222', 'em uso', '18/07/2003', '42.47', '12.345.678/0001-90', '468.325.873-40', '0000');
+insert into Bicicleta(id, modelo, ano, descricao, valor) values ('0000', 'modelo', '2013', 'bike', '2000');
+
+insert into Locacao values ('1111', '21/03/2000', '21.88', '12.345.678/0001-90', '987.654.321-09', '0000');
+insert into Locacao values ('2222', '22/03/2000', '21.88', '12.345.678/0001-90', '987.654.321-09', '0000');
+insert into Locacao values ('3333', '23/03/2000', '21.88', '12.345.678/0001-90', '987.654.321-09', '0000');
+
+insert into Locacao values ('5555', '23/03/2000', '21.88', '12.345.678/0001-90', '123.456.789-01', '0000');
+
+insert into Locacao values ('4444', '18/07/2003', '42.47', '12.345.678/0001-90', '468.325.873-40', '0000');

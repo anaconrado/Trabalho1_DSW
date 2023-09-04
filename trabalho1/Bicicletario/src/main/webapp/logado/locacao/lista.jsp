@@ -13,7 +13,7 @@
 
 		<div align="center">
 			<h1>
-				<fmt:message key="locacao.welcome" /> ${sessionScope.clienteLogado.papel} .
+				<fmt:message key="locacao.welcome" /> ${sessionScope.clienteLogado.papel}
 			</h1>
 			<h2>
 				<a href="${pageContext.request.contextPath}/logout.jsp"> 
