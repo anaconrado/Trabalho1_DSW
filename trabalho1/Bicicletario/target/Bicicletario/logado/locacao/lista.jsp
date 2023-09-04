@@ -44,9 +44,16 @@
 						<td>${locacao.val}</td>
 						<td>${locacao.locadora.cnpj}</td>
 						<td>${locacao.cliente.cpf}</td>
+						<td>
+							<button class="button-link" onclick="location.href='/${requestScope.contextPath}/locacao/formularioLocacao?id=${locacao.id}'"><fmt:message key="page.editar" /></button>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
+			
+				<td>
+					<button class="button-link" onclick="location.href='/${requestScope.contextPath}/locacao/formularioLocacao?'"><fmt:message key="page.adicionar" /></button>
+				</td>
 		</div>
 	</body>
 </fmt:bundle>
