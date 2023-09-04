@@ -13,7 +13,7 @@
 
 		<div align="center">
 			<h1>
-				<fmt:message key="locacao.welcome" />
+				<fmt:message key="locacao.welcome" /> ${sessionScope.clienteLogado.papel} .
 			</h1>
 			<h2>
 				<a href="${pageContext.request.contextPath}/logout.jsp"> 
@@ -29,17 +29,15 @@
 			<table border="1">
 				<caption></caption>
 				<tr>
-					<th><fmt:message key="locacao.ID" /></th>
-					<th><fmt:message key="locacao.status" /></th>
-					<th><fmt:message key="locacao.data" /></th>
-					<th><fmt:message key="locacao.valor" /></th>
-					<th><fmt:message key="locacao.locadora.ID" /> </th>
-					<th><fmt:message key="locacao.cliente.ID" /></th>
+					<th><fmt:message key= "locacao.ID" /></th>
+					<th><fmt:message key= "locacao.data" /></th>
+					<th><fmt:message key= "locacao.valor" /></th>
+					<th><fmt:message key= "locacao.locadora.ID" /> </th>
+					<th><fmt:message key= "locacao.cliente.ID" /></th>
 				</tr>
 				<c:forEach var="locacao" items="${requestScope.listaLocacoes}">
 					<tr>
 						<td>${locacao.id}</td>
-						<td>${locacao.status}</td>
 						<td>${locacao.data}</td>
 						<td>${locacao.val}</td>
 						<td>${locacao.locadora.cnpj}</td>
@@ -52,7 +50,7 @@
 			</table>
 			
 				<td>
-					<button class="button-link" onclick="location.href='/${requestScope.contextPath}/locacao/formularioLocacao?'"><fmt:message key="page.adicionar" /></button>
+					<button class="button-link" onclick="location.href='/${requestScope.contextPath}/locacao/cadastroLocacao'"><fmt:message key="page.adicionar" /></button>
 				</td>
 		</div>
 	</body>

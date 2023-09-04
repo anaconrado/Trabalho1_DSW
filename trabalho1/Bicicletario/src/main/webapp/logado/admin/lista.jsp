@@ -12,7 +12,7 @@
 <body>
 	<div align="center">
 		<h1>
-			<fmt:message key="page.welcome" />
+			<fmt:message key="page.welcome" /> ${sessionScope.clienteLogado.papel} .
 		</h1>
 		<h2><a href="/${requestScope.contextPath}"><fmt:message key="page.menu" /></a></h2> &nbsp;&nbsp;&nbsp; 
 		<h2>

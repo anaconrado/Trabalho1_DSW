@@ -14,5 +14,12 @@
                 <a href="${pageContext.request.contextPath}/logout.jsp">Sair</a>
             </li>
         </ul>
+        <ul>
+            <li>
+                <a href="${pageContext.request.contextPath}/locacao/lista">Listar Locacoes</a>
+            </li>
+        </ul>
+        
+        
     </body>
 </html>

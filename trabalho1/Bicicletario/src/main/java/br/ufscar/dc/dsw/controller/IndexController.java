@@ -46,9 +46,9 @@ public class IndexController extends HttpServlet {
 							response.sendRedirect("admin/");
 						} else {
 							if(usuario.getPapel().equals("CLIENTE")){
-								response.sendRedirect("locacoes/");
+								response.sendRedirect("locacao/");
 							}else{
-								response.sendRedirect("locacoes/");
+								response.sendRedirect("locacao/");
 							}
 						}
 						return;

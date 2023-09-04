@@ -34,8 +34,8 @@ abstract public class GenericDAO {
     	
     	/* Conexão banco de dados MySQL */
     	
-    	String url = "jdbc:mysql://localhost:3306/bicicletario";
+    	String url = "jdbc:mysql://localhost:3306/bicicletario?serverTimezone=America/Sao_Paulo";
     	
-    	return DriverManager.getConnection(url, "root", "root");
+    	return DriverManager.getConnection(url, "root", "Annalice#2235");
     }
 }

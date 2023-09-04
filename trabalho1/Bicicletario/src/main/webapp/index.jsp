@@ -10,6 +10,7 @@
     	<%String contextPath = request.getContextPath().replace("/", "");
 		%>
         <a href="login.jsp">Fazer Login</a>
-        <a href="/<%=contextPath%>/locadora/listaLocadoras">Listar Locadoras</a>
+        
+        <a href="/${requestScope.contextPath}/locadora/listaLocadoras">Listar Locadoras</a>
     </body>
 </html>

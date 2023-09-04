@@ -61,7 +61,7 @@ public class Locacao {
 		return cliente;
 	}
 	
-	public void setCpf(Cliente cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 	
@@ -69,7 +69,7 @@ public class Locacao {
 		return bicicleta;
 	}
 
-	public void Bicicleta(Bicicleta bicicleta) {
+	public void setBicicleta(Bicicleta bicicleta) {
 		this.bicicleta = bicicleta;
 	}
 }

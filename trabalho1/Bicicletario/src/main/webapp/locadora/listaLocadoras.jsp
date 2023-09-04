@@ -11,7 +11,6 @@
 		String contextPath = request.getContextPath().replace("/", "");
 	%>
 	<div align="center">
-		<h1>Gerenciamento de Livros</h1>
 		<h2>
 			<a href="/<%=contextPath%>">Menu Principal</a> &nbsp;&nbsp;&nbsp; <a
 				href="/<%=contextPath%>/Locadoras/">Lista Locadoras</a>
