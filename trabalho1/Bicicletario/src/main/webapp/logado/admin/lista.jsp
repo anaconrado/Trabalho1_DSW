@@ -14,7 +14,11 @@
 		<h1>
 			<fmt:message key="page.welcome" /> ${sessionScope.clienteLogado.papel} .
 		</h1>
-		<h2><a href="/${requestScope.contextPath}"><fmt:message key="page.menu" /></a></h2> &nbsp;&nbsp;&nbsp; 
+		<h2>
+			<a href="${pageContext.request.contextPath}/logout.jsp"> 
+				<fmt:message key="page.logout" />
+			</a>
+		</h2>
 		<h2>
 			<a href="/${requestScope.contextPath}/admin/cadastroCliente"><fmt:message key="cliente.add" /></a>
 		</h2>
