@@ -36,6 +36,6 @@ abstract public class GenericDAO {
     	
     	String url = "jdbc:mysql://localhost:3306/bicicletario?serverTimezone=America/Sao_Paulo";
     	
-    	return DriverManager.getConnection(url, "root", "Annalice#2235");
+    	return DriverManager.getConnection(url, "root", "root");
     }
 }
