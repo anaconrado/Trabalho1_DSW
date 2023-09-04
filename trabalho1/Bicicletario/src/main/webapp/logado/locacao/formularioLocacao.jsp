@@ -13,7 +13,7 @@
 <body>
 	<div align="center">
 		<h2>
-			<a href="lista"><fmt:message key="locacao.list" /></a>
+			<a href="/${requestScope.contextPath}/locacao/listaLocacoes"><fmt:message key="locacao.list" /></a>
 		</h2>
 	</div>
 	<div align="center">

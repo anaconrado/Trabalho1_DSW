@@ -110,7 +110,6 @@ public class LocacaoController extends HttpServlet {
     }
     
     // Formulario de cadastro de locacao (R5)
-
     private void cadastroLocacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/locacao/formularioLocacao.jsp");
