@@ -13,19 +13,19 @@
 <body>
 	<div align="center">
 		<h2>
-			<a href="lista"><fmt:message key="locacao.list" /></a>
+			<a href="/${requestScope.contextPath}/locacao/listaLocacoes"><fmt:message key="locacao.list" /></a>
 		</h2>
 	</div>
 	<div align="center">
 		<c:choose>
 			<c:when test="${locacao != null}">
 				<form action="atualizacaoLocacao" method="post">
-					<%@include file="camposLocacao.jsp"%>
+					<%@include file="camposLocacoes.jsp"%>
 				</form>
 			</c:when>
 			<c:otherwise>
 				<form action="insercaoLocacao" method="post">
-					<%@include file="camposLocacao.jsp"%>
+					<%@include file="camposLocacoes.jsp"%>
 				</form>
 			</c:otherwise>
 		</c:choose>
