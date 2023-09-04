@@ -10,37 +10,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Autenticação de Usuário</title>
     <link href="${pageContext.request.contextPath}/layout.css" rel="stylesheet" type="text/css"/>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        input[type="text"],
-        input[type="password"],
-        input[type="submit"] {
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-        
-        input[type="submit"] {
-            background-color: #878de0;
-            color: #fff;
-            cursor: pointer;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-        th, h1 {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-    </style>
+   
 </head>
 <body>
     <div>
-        <h1><fmt:message key="page.autenticacao" /></h1>
+        <h1 align="center"><fmt:message key="page.autenticacao" /></h1>
         <c:if test="${mensagens.existeErros}">
             <div id="erro">
                 <ul>
@@ -68,6 +42,12 @@
             </table>
         </form>
     </div>
+    <div align="center"> 
+		<button class="button-link" onclick="location.href='/locadora/listaLocadoras'"><fmt:message key="page.editar" /></button>
+		<button class="button-link" onclick="location.href='locadora/locadorasPorCidade'"><fmt:message key="page.editar" /></button>
+
+    </div>
+
 </body>
 </fmt:bundle>
 </html>

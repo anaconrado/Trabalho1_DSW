@@ -13,24 +13,24 @@
 	<div align="center">
 		<h2>
 			<a href="/<%=contextPath%>">Menu Principal</a> &nbsp;&nbsp;&nbsp; <a
-				href="/<%=contextPath%>/Locadoras/">Lista Locadoras</a>
+				href="/<%=contextPath%>/locadoras/">Lista Locadoras</a>
 		</h2>
 	</div>
 
 	<div align="center">
 		<table border="1">
-			<caption>Lista de Livros</caption>
+			<caption>Lista de Locadoras</caption>
 			<tr>
 				<th>CNPJ</th>
-				<th>Descrição</th>
+				<th>Nome</th>
 				<th>Cidade</th>
 				
 			</tr>
-			<c:forEach var="locadora" items="${requestScope.locadora}">
+			<c:forEach var="locadora" items="${requestScope.listaLocadoras}">
 				<tr>
-					<td>${locadora.getCnpj()}</td>
-					<td>${locadora.getDescricao()}</td>
-					<td>${locadora.getCidade()}</td>
+					<td>${locadora.cnpj}</td>
+					<td>${locadora.nome}</td>
+					<td>${locadora.cidade}</td>
 					
 				</tr>
 			</c:forEach>

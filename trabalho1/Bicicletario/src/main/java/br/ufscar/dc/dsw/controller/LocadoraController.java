@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.ufscar.dc.dsw.dao.LocadoraDAO;
@@ -39,14 +38,10 @@ public class LocadoraController extends HttpServlet{
     }
 
     private void listarLocadoras(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Locadora> listLoc = dao.getLocadoras();
-
-        // Adicione a lista de locadoras ao request
-        request.setAttribute("locadoras", listLoc);
-
-        // Encaminhe para a página JSP para exibir a lista de locadoras
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/listaLocadoras.jsp");
-        dispatcher.forward(request, response);
+        List<Locadora> listaLocadoras = dao.getAll();
+        request.setAttribute("listaLocadoras", listaLocadoras);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Locadora/listaLocadoras.jsp");
+        dispatcher.forward(request, response);    
     }
 
     private void listLocadorasPorCidade(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -63,7 +58,7 @@ public class LocadoraController extends HttpServlet{
             //request.setAttribute("cidade", cidade);
     
             // Encaminhe para a página JSP para exibir a lista de locadoras por cidade
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaPorCidade.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/Locadora/listaPorCidade.jsp");
             dispatcher.forward(request, response);
         } else {
             // Redirecione para a página de listagem de locadoras caso não seja especificada uma cidade

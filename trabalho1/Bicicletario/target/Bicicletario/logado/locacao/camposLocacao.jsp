@@ -42,9 +42,9 @@
 	</caption>
 	
 	<tr>
-		<td><label for="val">Valor:</label></td>
-		<td><input type="text" id="val" name="val" size="45" required
-			required value="${locacao.val}" /></td>
+		<td><label for="valor">Valor:</label></td>
+		<td><input type="text" id="valor" name="valor" size="45" required
+			required value="${locacao.valor}" /></td>
 	</tr>
 	
 	<tr>
@@ -60,15 +60,15 @@
 			</div> </td>
 	</tr>
 	<tr>
-		<td><label for="bike_id">Bicicleta:</label></td>
-		   <td> <select id="bike_id" name="bike_id" th:field="*{bike_id}">
-		        <option th:each="bike_id : ${Bicicleta}" 
+		<td><label for="bicicleta">Bicicleta:</label></td>
+		   <td> <select id="bicicleta" name="bicicleta" th:field="*{bicicleta}">
+		        <option th:each="bicicleta : ${Bicicleta}" 
 		                th:value="${bicicleta.id}" 
 		                th:text="${bicicleta.modelo}"></option>
 		    </select>
 		    
 		    <div class="invalid-feedback">
-				<span th:errors="*{bike_id}"></span>
+				<span th:errors="*{bicicleta}"></span>
 			</div> </td>
 	</tr>
 	<tr>
