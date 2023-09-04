@@ -30,8 +30,8 @@
 				</tr>
             </c:when>
 			<c:otherwise>
-			<fmt:message key="locacao.tittle.cadastro" />
 
+			<fmt:message key="locacao.tittle.cadastro" />
 			<tr>
 				<td><label for="id">ID</label></td>
 				<td><input type="text" id="id" name="id" size="14" 

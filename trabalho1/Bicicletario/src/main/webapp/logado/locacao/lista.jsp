@@ -26,6 +26,11 @@
 		</div>
 
 		<div align="center">
+			<h2>
+				<a href="/${requestScope.contextPath}/locacao/cadastroLocacao"><fmt:message key="locacao.adicionar" /></a>
+			</h2>
+		</div>
+		<div align="center">
 			<table border="1">
 				<caption></caption>
 				<tr>
@@ -48,10 +53,7 @@
 					</tr>
 				</c:forEach>
 			</table>
-			
-				<td>
-					<button class="button-link" onclick="location.href='/${requestScope.contextPath}/locacao/cadastroLocacao'"><fmt:message key="page.adicionar" /></button>
-				</td>
+	
 		</div>
 	</body>
 </fmt:bundle>
