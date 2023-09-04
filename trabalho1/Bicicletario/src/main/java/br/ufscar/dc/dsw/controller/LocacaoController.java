@@ -62,8 +62,8 @@ public class LocacaoController extends HttpServlet {
 	        	listaLocacoes(request, response);
 	            switch (action) {
 	            	
-		            case "/CadastroLocacao":
-		            	CadastroLocacao(request, response);
+		            case "/cadastroLocacao":
+		            	cadastroLocacao(request, response);
 		            	break;
 		            case "/formularioLocacao":
 		            	apresentaFormLocacao(request, response);
@@ -111,12 +111,11 @@ public class LocacaoController extends HttpServlet {
     
     // Formulario de cadastro de locacao (R5)
 
-    private void CadastroLocacao(HttpServletRequest request, HttpServletResponse response)
+    private void cadastroLocacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/locacao/formularioLocacao.jsp");
         dispatcher.forward(request, response);
     }
-
 
     private void apresentaFormLocacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
